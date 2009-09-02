@@ -52,6 +52,7 @@ Authors
 =========================================================================
 
 Yina Arenas	yina@virginia.edu
-Alex Gessner	aeg5a@virginia.edu
 Gu Lin		gl2hv@virginia.edu
 
+=========================================================================
+changing to test git
