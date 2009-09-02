@@ -21,6 +21,7 @@ public class NetSimController {
         //... Add listeners to the view.
         view.addMultiplyListener(new MultiplyListener());
         view.addClearListener(new ClearListener());
+    	System.out.println("here");
         view.addRightPaneMouseListeners(new RightPaneListeners ());        
     }
     
@@ -44,7 +45,7 @@ public class NetSimController {
     	 });*/
     	
     ////////////////////////////////////////// inner class MultiplyListener
-    /** When a mulitplication is requested.
+    /** When a multiplication is requested.
      *  1. Get the user input number from the View.
      *  2. Call the model to multiply by this number.
      *  3. Get the result from the Model.

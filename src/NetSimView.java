@@ -9,7 +9,7 @@ class NetSimView extends JFrame {
 
 	//... Components
 	private JTextField m_userInputTf = new JTextField(5);
-	private JTextField m_totalTf     = new JTextField(20);
+	private JTextField m_totalTf     = new JTextField(5);
 	private JButton    m_multiplyBtn = new JButton("Multiply");
 	private JButton    m_clearBtn    = new JButton("Clear");
 
@@ -66,6 +66,7 @@ class NetSimView extends JFrame {
 			setBackPane();
 			setMenuBar();
 			this.setTitle("Simple Netsim - MVC");
+			this.setContentPane(backPane);
 			pack();
 		} 
 		catch (Exception e) {
