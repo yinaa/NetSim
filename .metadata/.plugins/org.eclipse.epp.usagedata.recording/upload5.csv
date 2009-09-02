@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+java.vm.info,sysinfo,,,"mixed mode",1251874740483
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1251874740483
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1251874740483
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1251874740483
+java.vm.specification.version,sysinfo,,,"1.0",1251874740483
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1251874740483
+java.vm.version,sysinfo,,,"14.2-b01",1251874740483
+activated,view,org.eclipse.ui.navigator.resources,3.4.0.I20090525-2000,"org.eclipse.ui.navigator.ProjectExplorer",1251874741822
+activated,view,org.eclipse.ui.navigator.resources,3.4.0.I20090525-2000,"org.eclipse.ui.navigator.ProjectExplorer",1251874741828
+closed,view,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.internal.introview",1251874741866
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874750713
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874786944
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.import",1251874786969
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874794697
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874808401
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.navigate.collapseAll",1251874810828
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.navigate.collapseAll",1251874811439
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.navigate.linkWithEditor",1251874812002
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874825122
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874827651
+executed,command,org.eclipse.ui.ide,3.5.0.I20090525-2000,"org.eclipse.ui.edit.text.openLocalFile",1251874827704
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874834920
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874837190
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874846328
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251874852817
