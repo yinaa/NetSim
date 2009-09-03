@@ -25,9 +25,18 @@ class NetSimView extends JFrame {
 	private JPanel  topLeftPane   = new JPanel();
 	private JPanel bottomLeftPane = new JPanel();
 	JPanel   rightPane    = new JPanel();
+	ButtonGroup group = new ButtonGroup();
 
 	//Buttons
-	private JToggleButton linkButton, nodeButton, transButton, appButton, selectButton;
+	private JToggleButton linkButton;
+
+	JToggleButton nodeButton;
+
+	JToggleButton transButton;
+
+	JToggleButton appButton;
+
+	JToggleButton selectButton;
 
 	//Menus
 	private JMenuBar jMenuBar;
@@ -121,13 +130,11 @@ class NetSimView extends JFrame {
 		topLeftPane.add(selectButton);
 
 		//Group Buttons
-		ButtonGroup group = new ButtonGroup();
 		group.add(appButton);
 		group.add(transButton);
 		group.add(nodeButton);
 		group.add(linkButton);				
 		group.add(selectButton);
-			
 	}
 
 	void setBottonLeftPane(){		
@@ -207,12 +214,10 @@ class NetSimView extends JFrame {
 		rightPane.addMouseMotionListener(ma);
 	}*/
 
-	
-	//no se pa que si tengo el group
-	/*	void setSelectButtonListener(KeyAdapter ka){
+	void setSelectButtonListener(KeyAdapter ka){
 		selectButton.addKeyListener(ka);
-	}*/
-
+	}
+	
 	void addMultiplyListener(ActionListener mal) {
 		m_multiplyBtn.addActionListener(mal);
 	}
@@ -221,43 +226,61 @@ class NetSimView extends JFrame {
 		m_clearBtn.addActionListener(cal);
 	}
 
-	//============================================================
-	
-	public void paintObject(int posX, int posY) {
+	//============================================================ paint Object
+
+	public void paintObject(int posX, int posY, String name) {
 		int h =30;
 		int w = 60;
-		String name = "NODE";
-		ImageIcon icon = iconNode;
-		
-		posX=posX-15;
-		posY=posY-20;
-				
-		Image img = icon.getImage();  
-		Image newimg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
-		ImageIcon newIcon = new ImageIcon(newimg);
+		ImageIcon icon = null;
 
-		JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
-		posIcon.setSize(w, h);
+		if (nodeButton.isSelected()){
+			icon = iconNode;
+		}
+		else if (appButton.isSelected()){
+			icon = iconApp;
+			}
+		else if (transButton.isSelected()){
+			icon = iconTrans;
+		}
 
-		javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
-		rightPane.setLayout(rightPaneLayout);
-		rightPaneLayout.setHorizontalGroup(
-				rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(rightPaneLayout.createSequentialGroup()
-						.addGap(posX, posX, posX)
-						.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, w, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(w, Short.MAX_VALUE))
-		);
-		rightPaneLayout.setVerticalGroup(
-				rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(rightPaneLayout.createSequentialGroup()
-						.addGap(posY, posY, posY)
-						.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, h, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(h, Short.MAX_VALUE))
-		);
+		if(icon != null){
+			posX=posX-15;
+			posY=posY-20;
+
+			Image img = icon.getImage();  
+			Image newimg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+			ImageIcon newIcon = new ImageIcon(newimg);
+
+			JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
+			posIcon.setSize(w, h);
+
+			javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
+			rightPane.setLayout(rightPaneLayout);
+			rightPaneLayout.setHorizontalGroup(
+					rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(rightPaneLayout.createSequentialGroup()
+							.addGap(posX, posX, posX)
+							.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, w, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(w, Short.MAX_VALUE))
+			);
+			rightPaneLayout.setVerticalGroup(
+					rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+					.addGroup(rightPaneLayout.createSequentialGroup()
+							.addGap(posY, posY, posY)
+							.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, h, javax.swing.GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(h, Short.MAX_VALUE))
+			);
+		}
 	}
-	
-	//============================================================
+
+	//=========================================================== select Object
+
+	public void selectObject(int posX, int posY){
+		//Component iconComp = rightPane.getComponentAt(posX, posY);
+
+	}
+
+	//============================================================ 
 	void reset() {
 		m_totalTf.setText(INITIAL_VALUE);
 	}

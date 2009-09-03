@@ -1,13 +1,10 @@
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 //import java.awt.event.MouseListener;
 
 //import NetSimController.ClearListener;
@@ -30,25 +27,73 @@ public class NetSimController {
 		view.addRightPaneMouseListeners(new RightPaneListeners ());
 	}
 
+	//==========================================  inner class ClearListener
+	/**  1. If a Node, App or Trans button is selected: paints the object 
+	 *      in the view.rightPane and adds it to the model
+	 *   2. If Select button is selected:
+	 *   3. If Link button is selected:
+	 */    
 	class RightPaneListeners extends MouseAdapter {
 		public void mouseClicked(MouseEvent me) {
-			System.out.println(me.getX());
-//			ImageIcon icon = null;
-
 			int posX = me.getX();
 			int posY = me.getY();
-			
-//how do I access the components in the right pane?
-//			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
-			
-//			if(icon!=null){
-				m_view.paintObject(posX, posY);
-//			}
-			//rightPaneClicked(me);
+			String name = null;
+
+			if (m_view.nodeButton.isSelected()){
+				name = "NODE";		
+			}
+			else if (m_view.appButton.isSelected()){
+				name = "APP";
+			}
+			else if (m_view.transButton.isSelected()){
+				name = "TRANS";
+			}
+
+			if(name != null){
+				m_view.paintObject(posX, posY, name);
+				m_model.insertObject(posX, posY, name);
+			}
+
+			//how do I access the components in the right pane?
+			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
+			ArrayList<Component> selectedComponents = new ArrayList<Component>();
+
+//not working on deselecting object
+			if (m_view.selectButton.isSelected()) {
+				if (!iconComp.equals(m_view.rightPane)) {
+					if (!me.isControlDown()){
+						for (Object comp : selectedComponents) {
+							((Component) comp).setForeground(java.awt.Color.BLACK);
+						}
+						selectedComponents.clear();
+						iconComp.setForeground(java.awt.Color.BLUE);
+						selectedComponents.add(iconComp);
+					}
+					else {
+						if (selectedComponents.contains(iconComp)) {
+							iconComp.setForeground(java.awt.Color.BLACK);
+							selectedComponents.remove(iconComp);
+						}
+						else {
+							iconComp.setForeground(java.awt.Color.BLUE);
+							selectedComponents.add(iconComp);
+						}
+					}
+				}
+				else {
+					for (Object comp : selectedComponents) {
+						((Component) comp).setForeground(java.awt.Color.BLACK);
+					}
+					selectedComponents.clear();
+				}
+			}
+			m_view.rightPane.repaint();
+
 			//drawNetworkConnection(me);
 		}
-	}
+	}//end inner class RightPaneListeners
 
+	
 	/* rightPane.addMouseListener(new MouseAdapter(){		
     		 public void mouseReleased(MouseEvent me){
     			 //rightPaneMouseReleased(me);
@@ -66,7 +111,20 @@ public class NetSimController {
 		}
 	});*/
 
-	////////////////////////////////////////// inner class MultiplyListener
+
+
+	//==========================================  inner class ClearListener
+	/**  1. Reset model.
+	 *   2. Reset View.
+	 */    
+	class ClearListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			m_model.reset();
+			m_view.reset();
+		}
+	}// end inner class ClearListener
+
+	//========================================== inner class MultiplyListener
 	/** When a multiplication is requested.
 	 *  1. Get the user input number from the View.
 	 *  2. Call the model to multiply by this number.
@@ -87,17 +145,5 @@ public class NetSimController {
 			}
 		}
 	}//end inner class MultiplyListener
-
-
-	//////////////////////////////////////////// inner class ClearListener
-	/**  1. Reset model.
-	 *   2. Reset View.
-	 */    
-	class ClearListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			m_model.reset();
-			m_view.reset();
-		}
-	}// end inner class ClearListener
 
 }

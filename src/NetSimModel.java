@@ -5,8 +5,6 @@ import java.util.Map;
 public class NetSimModel {
 	//... Constants
 	private static final String INITIAL_VALUE = "0";
-	private static final int xMax=600;
-	private static final int yMax=600;
 	
 	//... Member variable defining state of calculator.
 	private BigInteger m_total;  // The total current value state.
@@ -22,10 +20,10 @@ public class NetSimModel {
 
 	//=============================================================== insert node
 	/** insert node */
-	public void insertNode(int posX, int posY) {
+	public void insertObject(int posX, int posY, String name) {
 		for (int id=1; id<= 1000; id++){
 			if (!nodeList.containsKey(id)){
-				Node node = new Node(id, posX, posY);
+				Node node = new Node(id, posX, posY, name);
 				nodeList.put(id, node);
 			}
 		}
@@ -33,7 +31,7 @@ public class NetSimModel {
 	
 	//=============================================================== remove node
 	/** remove node */
-	public void removeNode(int posX, int posY){
+	public void removeObject(int posX, int posY){
 		int id = 0;
 		for (Map.Entry<Integer, Node> entry : nodeList.entrySet()) {
 		    Node node = entry.getValue();
@@ -43,7 +41,7 @@ public class NetSimModel {
 		    }
 	}
 	
-	public void removeNode(int id){
+	public void removeObject(int id){
 		nodeList.remove(id);
 	}
 

@@ -2,13 +2,15 @@
 public class Node {
 	private int x, y;
 	private int id;
+	private String name;
 	
 	//======================================================= constructor
 	/** Constructor */
-	Node(int nodeId, int posX, int posY){
+	Node(int nodeId, int posX, int posY, String nodeName){
 		id = nodeId;
 		x = posX;
 		y = posY;
+		name = nodeName;
 	}
 	
 	//======================================================= attributes
@@ -27,5 +29,9 @@ public class Node {
 	
 	public int getId(){
 		return id;
+	}
+	
+	public String getName(){
+		return name;
 	}
 }
