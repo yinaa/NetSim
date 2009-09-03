@@ -1,6 +1,8 @@
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -24,7 +26,8 @@ public class NetSimController {
 		//... Add listeners to the view.
 		view.addMultiplyListener(new MultiplyListener());
 		view.addClearListener(new ClearListener());
-		view.addRightPaneMouseListeners(new RightPaneListeners ());
+		view.addRightPaneMouseListeners(new RightPaneMouseListeners ());
+		view.addSelectKeyListeners(new SelectKeyListeners ());
 	}
 
 	//==========================================  inner class ClearListener
@@ -33,7 +36,19 @@ public class NetSimController {
 	 *   2. If Select button is selected:
 	 *   3. If Link button is selected:
 	 */    
-	class RightPaneListeners extends MouseAdapter {
+	
+	class SelectKeyListeners extends KeyAdapter {
+		public void keyPressed(KeyEvent evt) {
+			if ( evt.getKeyCode() == KeyEvent.VK_DELETE) {
+				for (Object comp : m_model.selectedComponents) {
+					m_view.rightPane.remove((Component) comp);
+				}
+				m_view.rightPane.repaint();
+			}
+		}
+	}
+	
+	class RightPaneMouseListeners extends MouseAdapter {
 		public void mouseClicked(MouseEvent me) {
 			int posX = me.getX();
 			int posY = me.getY();
@@ -58,7 +73,6 @@ public class NetSimController {
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
 			ArrayList<Component> selComp = m_model.selectedComponents;
 
-//not working on deselecting object
 			if (m_view.selectButton.isSelected()) {
 				if (!iconComp.equals(m_view.rightPane)) {
 					if (!me.isControlDown()){

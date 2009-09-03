@@ -204,20 +204,24 @@ class NetSimView extends JFrame {
 		}
 	}
 
-	void addRightPaneMouseListeners(MouseAdapter ma) {
-		rightPane.addMouseListener(ma);
-	}
-
 	//============================================================ add listeners
 
 	/*	void addRightPaneMouseMotionListeners(MouseAdapter ma) {
 		rightPane.addMouseMotionListener(ma);
 	}*/
-
+	
+	void addSelectKeyListeners(KeyAdapter e){
+		selectButton.addKeyListener(e);
+	}
+	
 	void setSelectButtonListener(KeyAdapter ka){
 		selectButton.addKeyListener(ka);
 	}
 	
+	void addRightPaneMouseListeners(MouseAdapter ma) {
+		rightPane.addMouseListener(ma);
+	}	
+
 	void addMultiplyListener(ActionListener mal) {
 		m_multiplyBtn.addActionListener(mal);
 	}
@@ -275,14 +279,15 @@ class NetSimView extends JFrame {
 
 	//=========================================================== select Object
 
-	public void selectObject(int posX, int posY){
-		//Component iconComp = rightPane.getComponentAt(posX, posY);
+//	public void selectObject(int posX, int posY){
+//		//Component iconComp = rightPane.getComponentAt(posX, posY);
+//	}
 
-	}
-
-	//============================================================ 
+	//=================================================================== reset
 	void reset() {
 		m_totalTf.setText(INITIAL_VALUE);
+		rightPane.removeAll();
+		rightPane.repaint();
 	}
 
 	String getUserInput() {
