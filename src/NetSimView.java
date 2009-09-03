@@ -18,23 +18,23 @@ class NetSimView extends JFrame {
 
 	//Variable declaration
 	private static final long serialVersionUID = 1L;
-	
+
 	//View Panels
 	private JSplitPane backPane   = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	private JSplitPane leftPane   = new JSplitPane(JSplitPane.VERTICAL_SPLIT);
 	private JPanel  topLeftPane   = new JPanel();
 	private JPanel bottomLeftPane = new JPanel();
-	private JPanel   rightPane    = new JPanel();
-	
+	JPanel   rightPane    = new JPanel();
+
 	//Buttons
 	private JToggleButton linkButton, nodeButton, transButton, appButton, selectButton;
-	
+
 	//Menus
 	private JMenuBar jMenuBar;
 	private JMenu fileMenu, helpMenu; //editMenu,
 	private JMenuItem  jMenuItem2,  jMenuItem4; //jMenuItem1, jMenuItem3,
-	
-/*	private JLabel posIcon;
+
+	/*	private JLabel posIcon;
 	private ArrayList<Component> selectedComponents = new ArrayList<Component>();
 	private ArrayList<Link> linkList = new ArrayList<Link>();
 	private boolean startDrag = false, drawLink = false;
@@ -49,7 +49,7 @@ class NetSimView extends JFrame {
 	ImageIcon iconPoint = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/point.png"));
 
 
-	//======================================================= constructor
+	//=============================================================== constructor
 	/** Constructor */
 	NetSimView(NetSimModel model) {
 		//... Set up the logic
@@ -58,7 +58,7 @@ class NetSimView extends JFrame {
 		try {
 			//... Initialize components
 			m_totalTf.setText(ns_model.getValue());
-			m_totalTf.setEditable(true);
+			m_totalTf.setEditable(false);
 
 			//////////////////////////////////////////////////////
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -74,7 +74,7 @@ class NetSimView extends JFrame {
 		}
 	}
 
-
+	//=============================================================== set panes
 	void setBackPane(){
 		backPane.setDividerSize(2);
 		backPane.setDividerLocation(150);
@@ -127,14 +127,9 @@ class NetSimView extends JFrame {
 		group.add(nodeButton);
 		group.add(linkButton);				
 		group.add(selectButton);
-
-		selectButton.addKeyListener(new KeyAdapter() {
-			public void keyPressed(KeyEvent evt) {
-				//rightPaneKeyPressed(evt);
-			}
-		});
+			
 	}
-	
+
 	void setBottonLeftPane(){		
 		leftPane.add(bottomLeftPane, JSplitPane.RIGHT);
 		bottomLeftPane.setLayout(new FlowLayout());
@@ -144,11 +139,14 @@ class NetSimView extends JFrame {
 		bottomLeftPane.add(new JLabel("Total"));
 		bottomLeftPane.add(m_totalTf);
 		bottomLeftPane.add(m_clearBtn);
+
+		//setSelectButtonKeyListener();
 	}
 
 	void setRightPane(){
 		rightPane.setBackground(new java.awt.Color(255,255,255));
 		rightPane.setPreferredSize(new java.awt.Dimension(393, 398));
+		rightPane.setVisible(true);
 	}
 
 	void setMenuBar(){
@@ -199,13 +197,67 @@ class NetSimView extends JFrame {
 		}
 	}
 
-	void addRightPaneMouseListeners(MouseAdapter me) {
-		rightPane.addMouseListener(me);
+	void addRightPaneMouseListeners(MouseAdapter ma) {
+		rightPane.addMouseListener(ma);
 	}
-/*	void addRightPaneMouseMotionListeners(MouseAdapter me) {
-		rightPane.addMouseMotionListener(me);
+
+	//============================================================ add listeners
+
+	/*	void addRightPaneMouseMotionListeners(MouseAdapter ma) {
+		rightPane.addMouseMotionListener(ma);
 	}*/
+
 	
+	//no se pa que si tengo el group
+	/*	void setSelectButtonListener(KeyAdapter ka){
+		selectButton.addKeyListener(ka);
+	}*/
+
+	void addMultiplyListener(ActionListener mal) {
+		m_multiplyBtn.addActionListener(mal);
+	}
+
+	void addClearListener(ActionListener cal) {
+		m_clearBtn.addActionListener(cal);
+	}
+
+	//============================================================
+	
+	public void paintObject(int posX, int posY) {
+		int h =30;
+		int w = 60;
+		String name = "NODE";
+		ImageIcon icon = iconNode;
+		
+		posX=posX-15;
+		posY=posY-20;
+				
+		Image img = icon.getImage();  
+		Image newimg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newimg);
+
+		JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
+		posIcon.setSize(w, h);
+
+		javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
+		rightPane.setLayout(rightPaneLayout);
+		rightPaneLayout.setHorizontalGroup(
+				rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(rightPaneLayout.createSequentialGroup()
+						.addGap(posX, posX, posX)
+						.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, w, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(w, Short.MAX_VALUE))
+		);
+		rightPaneLayout.setVerticalGroup(
+				rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				.addGroup(rightPaneLayout.createSequentialGroup()
+						.addGap(posY, posY, posY)
+						.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, h, javax.swing.GroupLayout.PREFERRED_SIZE)
+						.addContainerGap(h, Short.MAX_VALUE))
+		);
+	}
+	
+	//============================================================
 	void reset() {
 		m_totalTf.setText(INITIAL_VALUE);
 	}
@@ -220,13 +272,5 @@ class NetSimView extends JFrame {
 
 	void showError(String errMessage) {
 		JOptionPane.showMessageDialog(this, errMessage);
-	}
-
-	void addMultiplyListener(ActionListener mal) {
-		m_multiplyBtn.addActionListener(mal);
-	}
-
-	void addClearListener(ActionListener cal) {
-		m_clearBtn.addActionListener(cal);
 	}
 }
