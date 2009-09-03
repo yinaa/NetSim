@@ -21,7 +21,6 @@ public class NetSimController {
         //... Add listeners to the view.
         view.addMultiplyListener(new MultiplyListener());
         view.addClearListener(new ClearListener());
-    	System.out.println("here");
         view.addRightPaneMouseListeners(new RightPaneListeners ());        
     }
     

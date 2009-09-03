@@ -58,7 +58,7 @@ class NetSimView extends JFrame {
 		try {
 			//... Initialize components
 			m_totalTf.setText(ns_model.getValue());
-			m_totalTf.setEditable(false);
+			m_totalTf.setEditable(true);
 
 			//////////////////////////////////////////////////////
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

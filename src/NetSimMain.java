@@ -5,7 +5,8 @@ public class NetSimMain {
     public static void main(String[] args) {        
         NetSimModel      model      = new NetSimModel();
         NetSimView       view       = new NetSimView(model);
- //       NetSimController controller = new NetSimController(model, view);
+        @SuppressWarnings("unused")
+		NetSimController controller = new NetSimController(model, view);
         
         view.setVisible(true);
         view.setLocationRelativeTo(null);
