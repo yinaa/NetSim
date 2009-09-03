@@ -56,35 +56,35 @@ public class NetSimController {
 
 			//how do I access the components in the right pane?
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
-			ArrayList<Component> selectedComponents = new ArrayList<Component>();
+			ArrayList<Component> selComp = m_model.selectedComponents;
 
 //not working on deselecting object
 			if (m_view.selectButton.isSelected()) {
 				if (!iconComp.equals(m_view.rightPane)) {
 					if (!me.isControlDown()){
-						for (Object comp : selectedComponents) {
+						for (Object comp : selComp) {
 							((Component) comp).setForeground(java.awt.Color.BLACK);
 						}
-						selectedComponents.clear();
+						selComp.clear();
 						iconComp.setForeground(java.awt.Color.BLUE);
-						selectedComponents.add(iconComp);
+						selComp.add(iconComp);
 					}
 					else {
-						if (selectedComponents.contains(iconComp)) {
+						if (selComp.contains(iconComp)) {
 							iconComp.setForeground(java.awt.Color.BLACK);
-							selectedComponents.remove(iconComp);
+							selComp.remove(iconComp);
 						}
 						else {
 							iconComp.setForeground(java.awt.Color.BLUE);
-							selectedComponents.add(iconComp);
+							selComp.add(iconComp);
 						}
 					}
 				}
 				else {
-					for (Object comp : selectedComponents) {
+					for (Object comp : selComp) {
 						((Component) comp).setForeground(java.awt.Color.BLACK);
 					}
-					selectedComponents.clear();
+					selComp.clear();
 				}
 			}
 			m_view.rightPane.repaint();

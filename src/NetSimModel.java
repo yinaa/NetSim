@@ -1,4 +1,6 @@
+import java.awt.Component;
 import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,6 +13,7 @@ public class NetSimModel {
 	
 	//... 
 	private HashMap<Integer, Node> nodeList = new HashMap<Integer, Node>();
+	ArrayList<Component> selectedComponents = new ArrayList<Component>();
 	
 	//============================================================== constructor
 	/** Constructor */
