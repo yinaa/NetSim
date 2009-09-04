@@ -115,6 +115,8 @@ public class NetSimController {
 					g.drawLine(initMousePosX, initMousePosY, me.getX(), me.getY());
 			}
 			m_view.rightPane.repaint();
+//TODO		drawLinks();
+			
 		}
 	}
 
