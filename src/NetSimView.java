@@ -50,12 +50,12 @@ class NetSimView extends JFrame {
 	private Component initComponent= null;*/
 
 	//Icons
-	ImageIcon iconNode  = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/node.png"));
-	ImageIcon iconApp   = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/app.png"));
+	ImageIcon iconNode  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/node.png"));
+	ImageIcon iconApp   = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/app.png"));
 	ImageIcon iconTrans = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/trans.png"));
 	ImageIcon iconLink  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/link.png"));
 	ImageIcon iconPoint = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/point.png"));
-
+	
 	//Selected components array
 	ArrayList<Component> selectedComponents = new ArrayList<Component>();
 	
@@ -260,13 +260,13 @@ class NetSimView extends JFrame {
 			posY=posY-20;			
 
 			Image img = icon.getImage();  
-			Image newimg = img.getScaledInstance(12, 12, Image.SCALE_SMOOTH);
+			Image newimg = img.getScaledInstance(14, 14, Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newimg);
 
 			JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
 			
 			Font curFont = posIcon.getFont();
-			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 9));
+			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 11));
 
 			posIcon.setSize(w, h);
 			rightPane.add(posIcon);
