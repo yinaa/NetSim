@@ -1,19 +1,17 @@
-import java.awt.Component;
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NetSimModel {
 	//... Constants
-	private static final String INITIAL_VALUE = "0";
+	private static final String INITIAL_VALUE = "1";
 	
 	//... Member variable defining state of calculator.
 	private BigInteger m_total;  // The total current value state.
 	
 	//... 
 	private HashMap<Integer, Node> nodeList = new HashMap<Integer, Node>();
-	ArrayList<Component> selectedComponents = new ArrayList<Component>();
+
 	
 	//============================================================== constructor
 	/** Constructor */
@@ -47,7 +45,7 @@ public class NetSimModel {
 	public void removeObject(int id){
 		nodeList.remove(id);
 	}
-
+	
 	//==================================================================== reset
 	/** Reset to initial value. */
 	public void reset() {

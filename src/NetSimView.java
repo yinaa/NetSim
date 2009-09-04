@@ -1,17 +1,19 @@
 import java.awt.*;
+
 import javax.swing.*;
 import java.awt.event.*;
 //import java.util.ArrayList;
+import java.util.ArrayList;
 
 class NetSimView extends JFrame {
 	//... Constants
 	private static final String INITIAL_VALUE = "1";
 
 	//... Components
-	private JTextField m_userInputTf = new JTextField(5);
-	private JTextField m_totalTf     = new JTextField(5);
-	private JButton    m_multiplyBtn = new JButton("Multiply");
-	private JButton    m_clearBtn    = new JButton("Clear");
+	private JTextField userInputTextField = new JTextField(5);
+	private JTextField totalTextField     = new JTextField(5);
+	private JButton    multiplyBtn        = new JButton("Multiply");
+	private JButton    clearButton        = new JButton("Clear");
 
 	///////////////////////////
 	private NetSimModel ns_model;
@@ -28,14 +30,10 @@ class NetSimView extends JFrame {
 	ButtonGroup group = new ButtonGroup();
 
 	//Buttons
-	private JToggleButton linkButton;
-
+	JToggleButton linkButton;
 	JToggleButton nodeButton;
-
 	JToggleButton transButton;
-
 	JToggleButton appButton;
-
 	JToggleButton selectButton;
 
 	//Menus
@@ -57,6 +55,10 @@ class NetSimView extends JFrame {
 	ImageIcon iconLink  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/link.png"));
 	ImageIcon iconPoint = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/point.png"));
 
+	//Selected components array
+	ArrayList<Component> selectedComponents = new ArrayList<Component>();
+	
+	Graphics g = rightPane.getGraphics();
 
 	//=============================================================== constructor
 	/** Constructor */
@@ -66,8 +68,8 @@ class NetSimView extends JFrame {
 		ns_model.setValue(INITIAL_VALUE);
 		try {
 			//... Initialize components
-			m_totalTf.setText(ns_model.getValue());
-			m_totalTf.setEditable(false);
+			totalTextField.setText(ns_model.getValue());
+			totalTextField.setEditable(false);
 
 			//////////////////////////////////////////////////////
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -141,11 +143,11 @@ class NetSimView extends JFrame {
 		leftPane.add(bottomLeftPane, JSplitPane.RIGHT);
 		bottomLeftPane.setLayout(new FlowLayout());
 		bottomLeftPane.add(new JLabel("Input"));
-		bottomLeftPane.add(m_userInputTf);
-		bottomLeftPane.add(m_multiplyBtn);
+		bottomLeftPane.add(userInputTextField);
+		bottomLeftPane.add(multiplyBtn);
 		bottomLeftPane.add(new JLabel("Total"));
-		bottomLeftPane.add(m_totalTf);
-		bottomLeftPane.add(m_clearBtn);
+		bottomLeftPane.add(totalTextField);
+		bottomLeftPane.add(clearButton);
 
 		//setSelectButtonKeyListener();
 	}
@@ -221,13 +223,17 @@ class NetSimView extends JFrame {
 	void addRightPaneMouseListeners(MouseAdapter ma) {
 		rightPane.addMouseListener(ma);
 	}	
+	
+	void addRightPaneMouseMotionListener(MouseAdapter ma) {
+		rightPane.addMouseMotionListener(ma);
+	}
 
 	void addMultiplyListener(ActionListener mal) {
-		m_multiplyBtn.addActionListener(mal);
+		multiplyBtn.addActionListener(mal);
 	}
 
 	void addClearListener(ActionListener cal) {
-		m_clearBtn.addActionListener(cal);
+		clearButton.addActionListener(cal);
 	}
 
 	//============================================================ paint Object
@@ -277,25 +283,25 @@ class NetSimView extends JFrame {
 		}
 	}
 
-	//=========================================================== select Object
+	//========================================================= remove Selection
 
-//	public void selectObject(int posX, int posY){
-//		//Component iconComp = rightPane.getComponentAt(posX, posY);
-//	}
-
+	public void removeSelectedComponents() {
+		selectedComponents.clear();
+	}
+	
 	//=================================================================== reset
 	void reset() {
-		m_totalTf.setText(INITIAL_VALUE);
+		totalTextField.setText(INITIAL_VALUE);
 		rightPane.removeAll();
 		rightPane.repaint();
 	}
 
 	String getUserInput() {
-		return m_userInputTf.getText();
+		return userInputTextField.getText();
 	}
 
 	void setTotal(String newTotal) {
-		m_totalTf.setText(newTotal);
+		totalTextField.setText(newTotal);
 	}
 
 	void showError(String errMessage) {
