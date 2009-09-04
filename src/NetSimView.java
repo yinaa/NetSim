@@ -1,6 +1,7 @@
 import java.awt.*;
 
 import javax.swing.*;
+
 import java.awt.event.*;
 //import java.util.ArrayList;
 import java.util.ArrayList;
@@ -237,49 +238,39 @@ class NetSimView extends JFrame {
 	}
 
 	//============================================================ paint Object
-
 	public void paintObject(int posX, int posY, String name) {
 		int h =30;
 		int w = 60;
 		ImageIcon icon = null;
-
-		if (nodeButton.isSelected()){
+		
+		String type = name.split("_")[0];
+				
+		if (type.compareTo("node")==0){
 			icon = iconNode;
 		}
-		else if (appButton.isSelected()){
-			icon = iconApp;
-			}
-		else if (transButton.isSelected()){
+		else if (type.compareTo("trans")==0){
 			icon = iconTrans;
 		}
-
+		else if (type.compareTo("app")==0){
+			icon = iconApp;
+		}
+		
 		if(icon != null){
 			posX=posX-15;
-			posY=posY-20;
+			posY=posY-20;			
 
 			Image img = icon.getImage();  
-			Image newimg = img.getScaledInstance(20, 20, Image.SCALE_SMOOTH);
+			Image newimg = img.getScaledInstance(12, 12, Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newimg);
 
 			JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
-			posIcon.setSize(w, h);
+			
+			Font curFont = posIcon.getFont();
+			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 9));
 
-			javax.swing.GroupLayout rightPaneLayout = new javax.swing.GroupLayout(rightPane);
-			rightPane.setLayout(rightPaneLayout);
-			rightPaneLayout.setHorizontalGroup(
-					rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-					.addGroup(rightPaneLayout.createSequentialGroup()
-							.addGap(posX, posX, posX)
-							.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, w, javax.swing.GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(w, Short.MAX_VALUE))
-			);
-			rightPaneLayout.setVerticalGroup(
-					rightPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-					.addGroup(rightPaneLayout.createSequentialGroup()
-							.addGap(posY, posY, posY)
-							.addComponent(posIcon, javax.swing.GroupLayout.PREFERRED_SIZE, h, javax.swing.GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(h, Short.MAX_VALUE))
-			);
+			posIcon.setSize(w, h);
+			rightPane.add(posIcon);
+			posIcon.setLocation(posX, posY);
 		}
 	}
 

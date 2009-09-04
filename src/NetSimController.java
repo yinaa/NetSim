@@ -8,6 +8,8 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 public class NetSimController {
 	//... The Controller interacts with both the Model and View.
 	private NetSimModel m_model;
@@ -17,7 +19,6 @@ public class NetSimController {
 	private boolean drawLink = false;
 	private int initMousePosX = 0;
 	private int initMousePosY = 0;
-
 
 	//========================================================== constructor
 	/** Constructor */
@@ -41,12 +42,14 @@ public class NetSimController {
 		public void keyPressed(KeyEvent evt) {
 			if ( evt.getKeyCode() == KeyEvent.VK_DELETE) {
 				for (Object comp : m_view.selectedComponents) {
+					String name = ((JLabel)comp).getText();
+					String type = name.split("_")[0];
+					int id = new Integer(name.split("_")[1]);
+					m_model.removeObject(type, id);
 					m_view.rightPane.remove((Component) comp);
-					//TODO Remove Objects from model	
-					//	m_model.removeObject(id) ???get components id or x y
 				}
 				m_view.rightPane.repaint();
-				m_view.removeSelectedComponents();
+				m_view.removeSelectedComponents();	//TODO pasar selectedComponents al control	
 			}
 		}
 	}
@@ -60,7 +63,6 @@ public class NetSimController {
 		Component initComponent= null;
 		
 		public void mouseDragged(MouseEvent me){
-			System.out.println("HERE");
 			Graphics g = m_view.rightPane.getGraphics();
 			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());		
 			
@@ -83,7 +85,7 @@ public class NetSimController {
 				}
 				int deltaX = me.getX() - initMousePosX;
 				int deltaY = me.getY() - initMousePosY;
-
+				
 				if (!m_view.selectedComponents.isEmpty() && !me.isControlDown()) {
 					deltaX = me.getX() - initMousePosX;
 					deltaY = me.getY() - initMousePosY;
@@ -91,11 +93,15 @@ public class NetSimController {
 						int X = ((Component) comp).getX() + deltaX;
 						int Y = ((Component) comp).getY() + deltaY;
 						((Component) comp).setLocation(X, Y);
+						String name = ((JLabel)comp).getText();
+						String type = name.split("_")[0];
+						int id = new Integer(name.split("_")[1]);
+						m_model.updatePosition(type, id, X, Y);
 					}
 					initMousePosX = me.getX();
 					initMousePosY = me.getY();
-				}
-				//TODO paint rectangle				
+					//TODO Change position of the object in the model
+				}		
 				else {
 					g.drawRect(Math.min(initMousePosX, me.getX()), Math.min(initMousePosY, me.getY()),
 							Math.abs(initMousePosX - me.getX()), Math.abs(initMousePosY - me.getY()));
@@ -115,8 +121,9 @@ public class NetSimController {
 					g.drawLine(initMousePosX, initMousePosY, me.getX(), me.getY());
 			}
 			m_view.rightPane.repaint();
-//TODO		drawLinks();
 			
+//TODO	draw link and and relationship to the model	
+//			drawLinks();			
 		}
 	}
 
@@ -134,19 +141,20 @@ public class NetSimController {
 			String name = null;
 
 			if (m_view.nodeButton.isSelected()){
-				name = "NODE";		
+				name = "node";		
 			}
 			else if (m_view.appButton.isSelected()){
-				name = "APP";
+				name = "app";
 			}
 			else if (m_view.transButton.isSelected()){
-				name = "TRANS";
+				name = "trans";
 			}
 
 			if(name != null){
-				m_view.paintObject(posX, posY, name);
-				m_model.insertObject(posX, posY, name);
+				int id = m_model.insertObject(posX, posY, name);
+				m_view.paintObject(posX, posY, name + "_" + id);
 			}
+			//TODO Insert user given name to each object/component
 
 			//how do I access the components in the right pane?
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
