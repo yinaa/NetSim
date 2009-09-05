@@ -1,22 +1,14 @@
 import java.awt.*;
-
 import javax.swing.*;
-
 import java.awt.event.*;
-//import java.util.ArrayList;
-import java.util.ArrayList;
 
 class NetSimView extends JFrame {
-	//... Constants
-	private static final String INITIAL_VALUE = "1";
-
 	//... Components
 	private JTextField userInputTextField = new JTextField(5);
 	private JTextField totalTextField     = new JTextField(5);
 	private JButton    multiplyBtn        = new JButton("Multiply");
 	private JButton    clearButton        = new JButton("Clear");
 
-	///////////////////////////
 	private NetSimModel ns_model;
 
 	//Variable declaration
@@ -56,23 +48,17 @@ class NetSimView extends JFrame {
 	ImageIcon iconLink  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/link.png"));
 	ImageIcon iconPoint = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/point.png"));
 
-	//Selected components array
-	ArrayList<Component> selectedComponents = new ArrayList<Component>();
-	
 	Graphics g = rightPane.getGraphics();
 
 	//=============================================================== constructor
 	/** Constructor */
-	NetSimView(NetSimModel model) {
+	NetSimView() {
 		//... Set up the logic
-		ns_model = model;
-		ns_model.setValue(INITIAL_VALUE);
 		try {
 			//... Initialize components
 			totalTextField.setText(ns_model.getValue());
 			totalTextField.setEditable(false);
 
-			//////////////////////////////////////////////////////
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//Back Pane setup
 			setBackPane();
@@ -149,8 +135,6 @@ class NetSimView extends JFrame {
 		bottomLeftPane.add(new JLabel("Total"));
 		bottomLeftPane.add(totalTextField);
 		bottomLeftPane.add(clearButton);
-
-		//setSelectButtonKeyListener();
 	}
 
 	void setRightPane(){
@@ -273,16 +257,10 @@ class NetSimView extends JFrame {
 			posIcon.setLocation(posX, posY);
 		}
 	}
-
-	//========================================================= remove Selection
-
-	public void removeSelectedComponents() {
-		selectedComponents.clear();
-	}
 	
 	//=================================================================== reset
 	void reset() {
-		totalTextField.setText(INITIAL_VALUE);
+		totalTextField.setText("1");
 		rightPane.removeAll();
 		rightPane.repaint();
 	}
