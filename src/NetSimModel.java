@@ -67,11 +67,7 @@ public class NetSimModel {
 			appList.remove(id);
 		}
 	}
-	
-	public void removeObject(int id){
-		nodeList.remove(id);
-	}
-	
+
 	//=========================================================== update position 
 	public void updatePosition(String type, int id, int posX, int posY) {
 		if (type.compareTo("node")==0){
@@ -97,6 +93,7 @@ public class NetSimModel {
 		appList.clear();
 	}
 
+	//This belongs to example we use to guide our MVC
 	//=============================================================== multiplyBy
 	/** Multiply current total by a number.
 	 *@param operand Number (as string) to multiply total by.

@@ -4,7 +4,7 @@ public class NetSimMain {
 	//    need them so there is only one copy of each.
 	public static void main(String[] args) {        
 		NetSimModel      model      = new NetSimModel();
-		NetSimView       view       = new NetSimView(model);
+		NetSimView       view       = new NetSimView();
 		@SuppressWarnings("unused")
 		NetSimController controller = new NetSimController(model, view);
 
