@@ -1,4 +1,4 @@
-
+/*this is a nodeclass*/
 public class Node {
 	private int x, y;
 	private int id;
