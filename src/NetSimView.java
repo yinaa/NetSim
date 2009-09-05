@@ -9,8 +9,6 @@ class NetSimView extends JFrame {
 	private JButton    multiplyBtn        = new JButton("Multiply");
 	private JButton    clearButton        = new JButton("Clear");
 
-	private NetSimModel ns_model;
-
 	//Variable declaration
 	private static final long serialVersionUID = 1L;
 
@@ -56,7 +54,7 @@ class NetSimView extends JFrame {
 		//... Set up the logic
 		try {
 			//... Initialize components
-			totalTextField.setText(ns_model.getValue());
+			//totalTextField.setText(ns_model.getValue());
 			totalTextField.setEditable(false);
 
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
