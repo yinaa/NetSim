@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+arch,sysinfo,,,"x86",1251875414762
+ws,sysinfo,,,"win32",1251875414762
+locale,sysinfo,,,"en_US",1251875414762
+processors,sysinfo,,,"2",1251875414763
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1251875414763
+java.runtime.version,sysinfo,,,"1.6.0_16-b01",1251875414763
+java.specification.name,sysinfo,,,"Java Platform API Specification",1251875414763
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1251875414763
+java.specification.version,sysinfo,,,"1.6",1251875414763
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1251875414763
+java.version,sysinfo,,,"1.6.0_16",1251875414763
+java.vm.info,sysinfo,,,"mixed mode",1251875414763
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1251875414763
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1251875414763
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1251875414763
+java.vm.specification.version,sysinfo,,,"1.0",1251875414763
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1251875414763
+java.vm.version,sysinfo,,,"14.2-b01",1251875414763
+opened,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1251875425721
+activated,view,org.eclipse.ui.console,3.4.0.v20090513,"org.eclipse.ui.console.ConsoleView",1251875425777
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.views.showView",1251875425782
+activated,view,org.eclipse.ui.views,3.4.0.I20090525-2000,"org.eclipse.ui.views.ContentOutline",1251875431245
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.views.showView",1251875431246
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875440831
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875454241
