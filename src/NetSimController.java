@@ -19,28 +19,20 @@ public class NetSimController {
 	private boolean drawLink = false;
 	private int initMousePosX = 0;
 	private int initMousePosY = 0;
-	
-	//Selected components array
-	ArrayList<Component> selectedComponents = new ArrayList<Component>();
-	
 
 	//========================================================== constructor
 	/** Constructor */
 	NetSimController(NetSimModel model, NetSimView view) {
-
 		m_model = model;
-		m_view = view;
-		
+		m_view  = view;		
+
 		//... Add listeners to the view.
-		view.addSelectKeyListeners(new SelectKeyListeners());
-		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
-		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
-		
-		//This belongs to the example
-		view.addClearListener(new ClearListener());
 		view.addMultiplyListener(new MultiplyListener());
-		model.setValue("1");		
-}
+		view.addClearListener(new ClearListener());
+		view.addSelectKeyListeners(new SelectKeyListeners ());
+		view.addRightPaneMouseListeners(new RightPaneMouseListeners ());	
+		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
+	}
 
 	//======================================== inner class SelectKeyListeners
 	/**  1. If selected button is selected, and the DEL key is pressed
@@ -49,7 +41,7 @@ public class NetSimController {
 	class SelectKeyListeners extends KeyAdapter {
 		public void keyPressed(KeyEvent evt) {
 			if ( evt.getKeyCode() == KeyEvent.VK_DELETE) {
-				for (Object comp : selectedComponents) {
+				for (Object comp : m_view.selectedComponents) {
 					String name = ((JLabel)comp).getText();
 					String type = name.split("_")[0];
 					int id = new Integer(name.split("_")[1]);
@@ -57,10 +49,11 @@ public class NetSimController {
 					m_view.rightPane.remove((Component) comp);
 				}
 				m_view.rightPane.repaint();
-				selectedComponents.clear();	//TODO pasar selectedComponents al control	
+				m_view.removeSelectedComponents();	//TODO pasar selectedComponents al control	
 			}
 		}
 	}
+
 	//================================== inner class RightPaneMouseMotionListener
 	/**  1. At mouse motion 
 	 *
@@ -73,21 +66,19 @@ public class NetSimController {
 			Graphics g = m_view.rightPane.getGraphics();
 			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());		
 			
-			System.out.println("X" + me.getX()+ "Y" +me.getY());
-			
 			if (m_view.selectButton.isSelected()) {
 
 				if (!startDrag) {
 					initMousePosX = me.getX();
 					initMousePosY = me.getY();
 
-					if (!selectedComponents.contains(iconComp) && !me.isControlDown()) {
-						for (Object comp : selectedComponents)
+					if (!m_view.selectedComponents.contains(iconComp) && !me.isControlDown()) {
+						for (Object comp : m_view.selectedComponents)
 							((Component) comp).setForeground(java.awt.Color.BLACK);
-						selectedComponents.clear();
+						m_view.selectedComponents.clear();
 						if (!iconComp.equals(m_view.rightPane)) {
 							iconComp.setForeground(java.awt.Color.BLUE);
-							selectedComponents.add(iconComp);
+							m_view.selectedComponents.add(iconComp);
 						}
 					}
 					startDrag = true;
@@ -95,10 +86,10 @@ public class NetSimController {
 				int deltaX = me.getX() - initMousePosX;
 				int deltaY = me.getY() - initMousePosY;
 				
-				if (!selectedComponents.isEmpty() && !me.isControlDown()) {
+				if (!m_view.selectedComponents.isEmpty() && !me.isControlDown()) {
 					deltaX = me.getX() - initMousePosX;
 					deltaY = me.getY() - initMousePosY;
-					for (Object comp : selectedComponents) {
+					for (Object comp : m_view.selectedComponents) {
 						int X = ((Component) comp).getX() + deltaX;
 						int Y = ((Component) comp).getY() + deltaY;
 						((Component) comp).setLocation(X, Y);
@@ -167,7 +158,7 @@ public class NetSimController {
 
 			//how do I access the components in the right pane?
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
-			ArrayList<Component> selComp = selectedComponents;
+			ArrayList<Component> selComp = m_view.selectedComponents;
 
 			if (m_view.selectButton.isSelected()) {
 				if (!iconComp.equals(m_view.rightPane)) {
@@ -213,13 +204,13 @@ public class NetSimController {
 					int maxX = Math.max(initMousePosX, me.getX());
 					int maxY = Math.max(initMousePosY, me.getY());
 					if (posX >= minX && posX <= maxX && posY >= minY && posY <= maxY) {
-						if (selectedComponents.contains((Component) comp)) {
+						if (m_view.selectedComponents.contains((Component) comp)) {
 							((Component) comp).setForeground(java.awt.Color.BLACK);
-							selectedComponents.remove(((Component) comp));
+							m_view.selectedComponents.remove(((Component) comp));
 						}
 						else {
 							((Component) comp).setForeground(java.awt.Color.BLUE);
-							selectedComponents.add(((Component) comp));
+							m_view.selectedComponents.add(((Component) comp));
 						}
 					}
 				}
@@ -249,7 +240,6 @@ public class NetSimController {
 		}
 	}// end inner class ClearListener
 
-	//This belong to the example
 	//========================================== inner class MultiplyListener
 	/** When a multiplication is requested.
 	 *  1. Get the user input number from the View.
@@ -273,3 +263,4 @@ public class NetSimController {
 	}//end inner class MultiplyListener
 
 }
+

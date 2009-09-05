@@ -1,6 +1,10 @@
 import java.awt.*;
+
 import javax.swing.*;
+
 import java.awt.event.*;
+//import java.util.ArrayList;
+import java.util.ArrayList;
 
 class NetSimView extends JFrame {
 	//... Constants
@@ -13,7 +17,7 @@ class NetSimView extends JFrame {
 	private JButton    clearButton        = new JButton("Clear");
 
 	///////////////////////////
-	//private NetSimModel ns_model;
+	private NetSimModel ns_model;
 
 	//Variable declaration
 	private static final long serialVersionUID = 1L;
@@ -46,29 +50,32 @@ class NetSimView extends JFrame {
 	private Component initComponent= null;*/
 
 	//Icons
-	ImageIcon iconNode  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/node.png"));
-	ImageIcon iconApp   = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/app.png"));
+	ImageIcon iconNode  = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/node.png"));
+	ImageIcon iconApp   = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/app.png"));
 	ImageIcon iconTrans = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/trans.png"));
 	ImageIcon iconLink  = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/link.png"));
 	ImageIcon iconPoint = new ImageIcon(getClass().getClassLoader().getResource("resources/icons/point.png"));
+
+	//Selected components array
+	ArrayList<Component> selectedComponents = new ArrayList<Component>();
 	
 	Graphics g = rightPane.getGraphics();
 
 	//=============================================================== constructor
 	/** Constructor */
-	NetSimView() {
+	NetSimView(NetSimModel model) {
 		//... Set up the logic
-
+		ns_model = model;
+		ns_model.setValue(INITIAL_VALUE);
 		try {
 			//... Initialize components
-			//totalTextField.setText(ns_model.getValue());
+			totalTextField.setText(ns_model.getValue());
 			totalTextField.setEditable(false);
 
 			//////////////////////////////////////////////////////
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//Back Pane setup
 			setBackPane();
-			//Menu setup
 			setMenuBar();
 			this.setTitle("Simple Netsim - MVC");
 			this.setContentPane(backPane);
@@ -201,9 +208,17 @@ class NetSimView extends JFrame {
 	}
 
 	//============================================================ add listeners
+
+	/*	void addRightPaneMouseMotionListeners(MouseAdapter ma) {
+		rightPane.addMouseMotionListener(ma);
+	}*/
 	
 	void addSelectKeyListeners(KeyAdapter e){
 		selectButton.addKeyListener(e);
+	}
+	
+	void setSelectButtonListener(KeyAdapter ka){
+		selectButton.addKeyListener(ka);
 	}
 	
 	void addRightPaneMouseListeners(MouseAdapter ma) {
@@ -214,7 +229,6 @@ class NetSimView extends JFrame {
 		rightPane.addMouseMotionListener(ma);
 	}
 
-	//This belong to the example
 	void addMultiplyListener(ActionListener mal) {
 		multiplyBtn.addActionListener(mal);
 	}
@@ -246,13 +260,13 @@ class NetSimView extends JFrame {
 			posY=posY-20;			
 
 			Image img = icon.getImage();  
-			Image newimg = img.getScaledInstance(14, 14, Image.SCALE_SMOOTH);
+			Image newimg = img.getScaledInstance(12, 12, Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newimg);
 
 			JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
 			
 			Font curFont = posIcon.getFont();
-			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 11));
+			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 9));
 
 			posIcon.setSize(w, h);
 			rightPane.add(posIcon);
@@ -260,6 +274,12 @@ class NetSimView extends JFrame {
 		}
 	}
 
+	//========================================================= remove Selection
+
+	public void removeSelectedComponents() {
+		selectedComponents.clear();
+	}
+	
 	//=================================================================== reset
 	void reset() {
 		totalTextField.setText(INITIAL_VALUE);
@@ -279,3 +299,4 @@ class NetSimView extends JFrame {
 		JOptionPane.showMessageDialog(this, errMessage);
 	}
 }
+
