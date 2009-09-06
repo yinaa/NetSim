@@ -1,4 +1,5 @@
 what,kind,bundleId,bundleVersion,description,time
+<<<<<<< HEAD
 started,bundle,org.eclipse.equinox.frameworkadmin.equinox,1.0.100.v20090520-1905,"org.eclipse.equinox.frameworkadmin.equinox",1252197205062
 started,bundle,org.eclipse.equinox.p2.core,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.core",1252197205062
 started,bundle,org.eclipse.equinox.p2.director,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.director",1252197205062
@@ -24,3 +25,30 @@ started,bundle,org.eclipse.jface,3.5.0.I20090525-2000,"org.eclipse.jface",125219
 started,bundle,org.eclipse.jsch.core,1.1.100.I20090430-0408,"org.eclipse.jsch.core",1252197205093
 started,bundle,org.eclipse.mylyn.commons.net,3.2.0.v20090617-0100-e3x,"org.eclipse.mylyn.commons.net",1252197205093
 started,bundle,org.eclipse.search,3.5.0.v20090526-2000,"org.eclipse.search",1252197205093
+=======
+started,bundle,org.eclipse.emf.edit.ui,2.5.0.v200906151043,"org.eclipse.emf.edit.ui",1251874740378
+started,bundle,org.eclipse.epp.usagedata.gathering,1.1.0.R200906100410,"org.eclipse.epp.usagedata.gathering",1251874740379
+started,bundle,org.eclipse.epp.usagedata.recording,1.1.0.R200906100410,"org.eclipse.epp.usagedata.recording",1251874740379
+started,bundle,org.eclipse.equinox.app,1.2.0.v20090520-1800,"org.eclipse.equinox.app",1251874740380
+started,bundle,org.eclipse.equinox.common,3.5.0.v20090520-1800,"org.eclipse.equinox.common",1251874740380
+started,bundle,org.eclipse.equinox.ds,1.1.0.v20090601,"org.eclipse.equinox.ds",1251874740381
+started,bundle,org.eclipse.equinox.frameworkadmin,1.0.100.v20090520-1905,"org.eclipse.equinox.frameworkadmin",1251874740382
+started,bundle,org.eclipse.equinox.frameworkadmin.equinox,1.0.100.v20090520-1905,"org.eclipse.equinox.frameworkadmin.equinox",1251874740382
+started,bundle,org.eclipse.equinox.p2.core,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.core",1251874740383
+started,bundle,org.eclipse.equinox.p2.director,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.director",1251874740383
+started,bundle,org.eclipse.equinox.p2.directorywatcher,1.0.100.v20090525,"org.eclipse.equinox.p2.directorywatcher",1251874740384
+started,bundle,org.eclipse.equinox.p2.engine,1.0.100.v20090525,"org.eclipse.equinox.p2.engine",1251874740385
+started,bundle,org.eclipse.equinox.p2.exemplarysetup,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.exemplarysetup",1251874740385
+started,bundle,org.eclipse.equinox.p2.garbagecollector,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.garbagecollector",1251874740385
+started,bundle,org.eclipse.equinox.p2.metadata.repository,1.0.100.v20090525,"org.eclipse.equinox.p2.metadata.repository",1251874740386
+started,bundle,org.eclipse.equinox.p2.reconciler.dropins,1.0.100.v20090520-1905,"org.eclipse.equinox.p2.reconciler.dropins",1251874740387
+started,bundle,org.eclipse.equinox.p2.repository,1.0.0.v20090601-1921,"org.eclipse.equinox.p2.repository",1251874740387
+started,bundle,org.eclipse.equinox.p2.ui.sdk.scheduler,1.0.0.v20090520-1905,"org.eclipse.equinox.p2.ui.sdk.scheduler",1251874740388
+started,bundle,org.eclipse.equinox.p2.updatechecker,1.1.0.v20090520-1905,"org.eclipse.equinox.p2.updatechecker",1251874740388
+started,bundle,org.eclipse.equinox.preferences,3.2.300.v20090520-1800,"org.eclipse.equinox.preferences",1251874740389
+started,bundle,org.eclipse.equinox.registry,3.4.100.v20090520-1800,"org.eclipse.equinox.registry",1251874740389
+started,bundle,org.eclipse.equinox.security,1.0.100.v20090520-1800,"org.eclipse.equinox.security",1251874740390
+started,bundle,org.eclipse.equinox.simpleconfigurator.manipulator,1.0.100.v20090520-1905,"org.eclipse.equinox.simpleconfigurator.manipulator",1251874740391
+started,bundle,org.eclipse.equinox.util,1.0.100.v20090520-1800,"org.eclipse.equinox.util",1251874740392
+started,bundle,org.eclipse.help,3.4.0.v20090526,"org.eclipse.help",1251874740393
+>>>>>>> 6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5

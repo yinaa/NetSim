@@ -1,4 +1,5 @@
 what,kind,bundleId,bundleVersion,description,time
+<<<<<<< HEAD
 started,bundle,org.eclipse.jdt.debug.ui,3.4.0.v20090527,"org.eclipse.jdt.debug.ui",1252197272828
 activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252197273062
 started,bundle,org.eclipse.core.variables,3.2.200.v20090521,"org.eclipse.core.variables",1252197273281
@@ -24,3 +25,26 @@ activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.Compilat
 activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252197339312
 activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252197339968
 deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252197341203
+=======
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875461702
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875470578
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.newWizard",1251875470587
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875475100
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875483254
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.import",1251875483266
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875485061
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875485076
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875490750
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875500571
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875502954
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875502968
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875503482
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875504992
+closed,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1251875505057
+stopped,bundle,org.eclipse.jst.ws.axis.creation.ui,1.0.406.v200903031852,"org.eclipse.jst.ws.axis.creation.ui",1251875505645
+stopped,bundle,org.eclipse.jst.ws.axis.consumption.ui,1.0.405.v200901261650,"org.eclipse.jst.ws.axis.consumption.ui",1251875505646
+stopped,bundle,org.eclipse.jst.ws.axis.consumption.core,1.0.306.v200810082309,"org.eclipse.jst.ws.axis.consumption.core",1251875505646
+stopped,bundle,org.eclipse.jst.ws.axis2.creation.ui,1.0.103.v200807162242,"org.eclipse.jst.ws.axis2.creation.ui",1251875505647
+stopped,bundle,org.eclipse.jst.ws.axis2.consumption.ui,1.0.102.v200807232000,"org.eclipse.jst.ws.axis2.consumption.ui",1251875505648
+stopped,bundle,org.eclipse.jst.ws.axis2.creation.core,1.0.105.v200901220134,"org.eclipse.jst.ws.axis2.creation.core",1251875505649
+>>>>>>> 6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5

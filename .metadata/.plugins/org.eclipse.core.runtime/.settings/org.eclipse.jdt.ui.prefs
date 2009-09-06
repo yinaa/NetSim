@@ -1,9 +1,14 @@
+<<<<<<< HEAD
 #Sat Sep 05 20:37:00 EDT 2009
+=======
+#Wed Sep 02 03:10:01 EDT 2009
+>>>>>>> 6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5
 useQuickDiffPrefPage=true
 proposalOrderMigrated=true
 tabWidthPropagated=true
 content_assist_proposals_background=255,255,255
 org.eclipse.jdt.ui.javadoclocations.migrated=true
+<<<<<<< HEAD
 org.eclipse.jdt.ui.text.code_templates_migrated=true
 org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
 useAnnotationsPrefPage=true
@@ -11,6 +16,13 @@ org.eclipse.jface.textfont=1|Courier New|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|
 org.eclipse.jdt.ui.editor.tab.width=
 org.eclipse.jdt.ui.formatterprofiles.version=11
 content_assist_number_of_computers=16
+=======
+useAnnotationsPrefPage=true
+org.eclipse.jface.textfont=1|Courier New|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Courier New;
+org.eclipse.jdt.internal.ui.navigator.layout=2
+org.eclipse.jdt.ui.editor.tab.width=
+org.eclipse.jdt.ui.formatterprofiles.version=11
+>>>>>>> 6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5
 spelling_locale_initialized=true
 eclipse.preferences.version=1
 content_assist_proposals_foreground=0,0,0
