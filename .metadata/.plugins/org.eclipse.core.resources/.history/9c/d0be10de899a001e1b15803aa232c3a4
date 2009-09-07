@@ -1,0 +1,48 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class NetSimViewTest {
+
+	@Test
+	public void testNetSimView() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBackPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetTopLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBottonLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetRightPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetMenuBar() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPaintObject() {
+		fail("Not yet implemented");
+	}
+
+}

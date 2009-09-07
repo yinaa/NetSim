@@ -1,0 +1,56 @@
+import static org.junit.Assert.*;
+import junit.framework.TestCase;
+
+import org.junit.Test;
+import org.uispec4j.UISpec4J;
+import org.uispec4j.UISpecTestCase;
+import org.uispec4j.Window;
+
+
+public class NetSimViewTest extends UISpecTestCase {
+	
+
+	@Test
+	public void testNetSimView() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBackPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetLeftPane() throws Exception{
+		//fail("Not yet implemented");
+		Window window= getMainWindow();
+		
+		
+	}
+
+	@Test
+	public void testSetTopLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBottonLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetRightPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetMenuBar() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPaintObject() {
+		fail("Not yet implemented");
+	}
+
+}

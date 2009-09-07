@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+java.vm.name,sysinfo,,,"Java HotSpot(TM) Client VM",1252200082968
+java.vm.specification.name,sysinfo,,,"Java Virtual Machine Specification",1252200082968
+java.vm.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1252200082968
+java.vm.specification.version,sysinfo,,,"1.0",1252200082968
+java.vm.vendor,sysinfo,,,"Sun Microsystems Inc.",1252200082968
+java.vm.version,sysinfo,,,"14.2-b01",1252200082968
+activated,view,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.PackageExplorer",1252200084640
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252200093484
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252200093546
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252200093609
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202006062
+error,log,,,"No property tester contributes a property projectPersistentProperty org.eclipse.team.core.repository to type class org.eclipse.core.internal.resources.Project",1252202012109
+started,bundle,org.eclipse.compare,3.5.0.I20090514-0808,"org.eclipse.compare",1252202012203
+error,log,,,"No property tester contributes a property projectPersistentProperty org.eclipse.team.core.repository to type class org.eclipse.core.internal.resources.Project",1252202013843
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202014218
+started,bundle,org.eclipse.ui.externaltools,3.2.0.v20090504,"org.eclipse.ui.externaltools",1252202016062
+started,bundle,org.eclipse.debug.ui,3.5.0.v20090603,"org.eclipse.debug.ui",1252202016140
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202041250
+executed,command,org.eclipse.ui,3.5.0.I20090604-2000,"org.eclipse.ui.file.properties",1252202041359
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202056515
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202056609
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202056625
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202178656
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202184015
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252202189843
