@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 what,kind,bundleId,bundleVersion,description,time
 <<<<<<< HEAD
 started,bundle,org.eclipse.jdt.debug.ui,3.4.0.v20090527,"org.eclipse.jdt.debug.ui",1252197272828
@@ -48,3 +49,31 @@ stopped,bundle,org.eclipse.jst.ws.axis2.creation.ui,1.0.103.v200807162242,"org.e
 stopped,bundle,org.eclipse.jst.ws.axis2.consumption.ui,1.0.102.v200807232000,"org.eclipse.jst.ws.axis2.consumption.ui",1251875505648
 stopped,bundle,org.eclipse.jst.ws.axis2.creation.core,1.0.105.v200901220134,"org.eclipse.jst.ws.axis2.creation.core",1251875505649
 >>>>>>> 6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5
+=======
+what,kind,bundleId,bundleVersion,description,time
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271048156
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271048531
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271053953
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271712328
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271713750
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271830875
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252271833484
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252271834312
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252271835046
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252271835906
+activated,editor,org.eclipse.jdt.ui,3.5.0.v20090604,"org.eclipse.jdt.ui.CompilationUnitEditor",1252271836640
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252271851734
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276150765
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276152375
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276152390
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276152515
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276371125
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276373750
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252276373859
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252287052890
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252287065265
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252287103437
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252287108515
+activated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252291155156
+deactivated,workbench,org.eclipse.ui.workbench,3.5.0.I20090603-2000,"",1252291196593
+>>>>>>> 6293af3d0ee6bd36c1212cf0ca50c8e52f919a19

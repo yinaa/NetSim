@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 #Sat Sep 05 20:37:00 EDT 2009
 =======
 #Wed Sep 02 03:10:01 EDT 2009
@@ -27,3 +28,28 @@ spelling_locale_initialized=true
 eclipse.preferences.version=1
 content_assist_proposals_foreground=0,0,0
 fontPropagated=true
+=======
+#Sat Sep 05 22:05:58 EDT 2009
+content_assist_proposals_foreground=0,0,0
+spelling_locale_initialized=true
+org.eclipse.jdt.ui.text.templates_migrated=true
+useAnnotationsPrefPage=true
+eclipse.preferences.version=1
+org.eclipse.jface.textfont=1|Courier New|10.0|0|WINDOWS|1|0|0|0|0|0|0|0|0|1|0|0|0|0|Courier New;
+tabWidthPropagated=true
+org.eclipse.jdt.ui.editor.tab.width=
+>>>>>>>=6b460f01b0eb8f6f66f8e2d91eb9a6c7b63d5da5
+fontPropagated=true
+org.eclipse.jdt.ui.text.custom_code_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+org.eclipse.jdt.ui.javadoclocations.migrated=true
+proposalOrderMigrated=true
+<<<<<<<=HEAD
+content_assist_proposals_background=255,255,255
+org.eclipse.jdt.ui.formatterprofiles.version=11
+org.eclipse.jdt.internal.ui.navigator.layout=2
+content_assist_number_of_computers=16
+useQuickDiffPrefPage=true
+org.eclipse.jdt.ui.text.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+=\=\=\=\=\=\=
+org.eclipse.jdt.ui.text.code_templates_migrated=true
+>>>>>>> 6293af3d0ee6bd36c1212cf0ca50c8e52f919a19

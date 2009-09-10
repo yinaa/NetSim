@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="NetSimViewTest" project="NetSim" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="NetSimViewTest" time="0.0">
+    <testcase name="testSetBackPane" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testSetLeftPane" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testSetTopLeftPane" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testSetBottonLeftPane" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testSetRightPane" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testSetMenuBar" classname="NetSimViewTest" time="0.0"/>
+    <testcase name="testPaintObject" classname="NetSimViewTest" time="0.0"/>
+  </testsuite>
+</testrun>

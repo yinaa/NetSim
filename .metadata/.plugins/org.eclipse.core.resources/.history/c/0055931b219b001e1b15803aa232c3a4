@@ -1,0 +1,151 @@
+import static org.junit.Assert.*;
+
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import org.uispec4j.Button;
+
+import javax.swing.JMenu;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+
+import junit.framework.TestCase;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.uispec4j.Panel;
+import org.uispec4j.UISpec4J;
+import org.uispec4j.UISpecTestCase;
+import org.uispec4j.Window;
+
+
+public class NetSimViewTest extends UISpecTestCase {
+	
+/*	public interface UISpecAdapter {
+		  Window getMainWindow();
+		}
+	@Test
+	public void testNetSimView() {
+		//fail("Not yet implemented");
+		
+
+		Window window= getMainWindow();
+		 
+		Panel topLeftPane =window.getPanel("topLeftPane");
+		org.uispec4j.Button nodeButton=window.getButton();
+		assertTrue(nodeButton.textEquals("Node"));
+	}
+	
+*/	
+	
+	NetSimView view = new NetSimView();
+	
+	static {
+		UISpec4J.init();
+	}
+	Window window;
+	public void testNetSimView(MouseListener simplelistener) {
+		
+		//Button node = window.getButton("Node");
+		//assertNotNull(node);
+		//node.click();
+		//assertTrue(node.textEquals("Node"));
+		
+		//JToggleButton nodeButton = (JToggleButton) window.getAwtComponent();
+		//Assert.assertTrue(nodeButton.isSelected());
+		//nodeButton.getComponent(node);
+		
+		//Assert.assertTrue(view.nodeButton.isSelected());
+		assertNotNull(view.nodeButton);
+		assertNotNull(view.linkButton);
+		assertNotNull(view.appButton);
+		
+		//assertTrue(view.appButton.getText().equals("App"));
+		
+		
+		System.out.println("name is " +view.linkButton.getText());
+		System.out.println("name is " +view.appButton.getText());
+		System.out.println("name is " +view.nodeButton.getText());
+	}
+	
+	view.rightPane.addMouseListener(simplelistener);
+	MouseListener SimpleListener = new MouseListener()
+	{
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			System.out.println("You chose" + e.getButton());
+			
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
+	;
+
+	//view.rightPane.getComponentAt(x, y);
+	
+	//assertTrue(view.nodeButton.equals("Node"));
+	
+	
+
+
+	@Test
+	public void testSetBackPane() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetLeftPane() throws Exception{
+		//fail("Not yet implemented");
+		
+		
+	}
+
+	@Test
+	public void testSetTopLeftPane() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBottonLeftPane() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetRightPane() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetMenuBar() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPaintObject() {
+		//fail("Not yet implemented");
+	}
+
+}

@@ -1,0 +1,100 @@
+import static org.junit.Assert.*;
+
+import org.uispec4j.Button;
+
+import javax.swing.JMenu;
+import javax.swing.JPanel;
+import javax.swing.JToggleButton;
+
+import junit.framework.TestCase;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.uispec4j.Panel;
+import org.uispec4j.UISpec4J;
+import org.uispec4j.UISpecTestCase;
+import org.uispec4j.Window;
+
+
+public class NetSimViewTest extends UISpecTestCase {
+	
+/*	public interface UISpecAdapter {
+		  Window getMainWindow();
+		}
+	@Test
+	public void testNetSimView() {
+		//fail("Not yet implemented");
+		
+
+		Window window= getMainWindow();
+		 
+		Panel topLeftPane =window.getPanel("topLeftPane");
+		org.uispec4j.Button nodeButton=window.getButton();
+		assertTrue(nodeButton.textEquals("Node"));
+	}
+	
+*/	
+	
+	NetSimView view = new NetSimView();
+	
+	static {
+		UISpec4J.init();
+	}
+	Window window;
+	public void testNetSimView() {
+		
+		//Button node = window.getButton("Node");
+		//assertNotNull(node);
+		//node.click();
+		//assertTrue(node.textEquals("Node"));
+		
+		//JToggleButton nodeButton = (JToggleButton) window.getAwtComponent();
+		//Assert.assertTrue(nodeButton.isSelected());
+		//nodeButton.getComponent(node);
+		
+		//Assert.assertTrue(view.nodeButton.isSelected());
+		assertNotNull(view.nodeButton);
+		
+		assertTrue(view.nodeButton.equals("Node"));
+		
+		
+	}
+
+	@Test
+	public void testSetBackPane() {
+		//fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetLeftPane() throws Exception{
+		//fail("Not yet implemented");
+		
+		
+	}
+
+	@Test
+	public void testSetTopLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetBottonLeftPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetRightPane() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testSetMenuBar() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testPaintObject() {
+		fail("Not yet implemented");
+	}
+
+}

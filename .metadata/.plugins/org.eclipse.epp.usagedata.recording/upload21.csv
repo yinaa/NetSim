@@ -1,0 +1,26 @@
+what,kind,bundleId,bundleVersion,description,time
+started,bundle,org.eclipse.update.scheduler,3.2.200.v20081127,"org.eclipse.update.scheduler",1252200082953
+started,bundle,org.eclipse.egit.core,0.5.0.200908282229,"org.eclipse.egit.core",1252200082953
+started,bundle,org.eclipse.egit.ui,0.5.0.200908282229,"org.eclipse.egit.ui",1252200082953
+started,bundle,org.eclipse.mylyn.bugzilla.core,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.bugzilla.core",1252200082953
+started,bundle,org.eclipse.mylyn.bugzilla.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.bugzilla.ui",1252200082953
+started,bundle,org.eclipse.mylyn.commons.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.commons.ui",1252200082968
+started,bundle,org.eclipse.mylyn.context.core,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.context.core",1252200082968
+started,bundle,org.eclipse.mylyn.context.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.context.ui",1252200082968
+started,bundle,org.eclipse.mylyn.monitor.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.monitor.ui",1252200082968
+started,bundle,org.eclipse.mylyn.tasks.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.tasks.ui",1252200082968
+started,bundle,org.eclipse.mylyn.team.ui,3.2.1.v20090722-0200-e3x,"org.eclipse.mylyn.team.ui",1252200082968
+started,bundle,org.spearce.jgit,0.5.0.200908282229,"org.spearce.jgit",1252200082968
+os,sysinfo,,,"win32",1252200082968
+arch,sysinfo,,,"x86",1252200082968
+ws,sysinfo,,,"win32",1252200082968
+locale,sysinfo,,,"en_US",1252200082968
+processors,sysinfo,,,"2",1252200082968
+java.runtime.name,sysinfo,,,"Java(TM) SE Runtime Environment",1252200082968
+java.runtime.version,sysinfo,,,"1.6.0_16-b01",1252200082968
+java.specification.name,sysinfo,,,"Java Platform API Specification",1252200082968
+java.specification.vendor,sysinfo,,,"Sun Microsystems Inc.",1252200082968
+java.specification.version,sysinfo,,,"1.6",1252200082968
+java.vendor,sysinfo,,,"Sun Microsystems Inc.",1252200082968
+java.version,sysinfo,,,"1.6.0_16",1252200082968
+java.vm.info,sysinfo,,,"mixed mode",1252200082968
