@@ -222,7 +222,7 @@ class NetSimView extends JFrame {
 	//============================================================ paint Object
 	public void paintObject(int posX, int posY, String name) {
 		int h =30;
-		int w = 60;
+		int w = 70;
 		ImageIcon icon = null;
 		
 		String type = name.split("_")[0];
@@ -242,13 +242,13 @@ class NetSimView extends JFrame {
 			posY=posY-20;			
 
 			Image img = icon.getImage();  
-			Image newimg = img.getScaledInstance(12, 12, Image.SCALE_SMOOTH);
+			Image newimg = img.getScaledInstance(14, 14, Image.SCALE_SMOOTH);
 			ImageIcon newIcon = new ImageIcon(newimg);
 
 			JLabel posIcon = new JLabel(name, newIcon,JLabel.CENTER);
 			
 			Font curFont = posIcon.getFont();
-			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 9));
+			posIcon.setFont(new Font(curFont.getFontName(), curFont.getStyle(), 13));
 
 			posIcon.setSize(w, h);
 			rightPane.add(posIcon);
