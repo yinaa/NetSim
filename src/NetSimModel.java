@@ -102,59 +102,7 @@ public class NetSimModel {
 		transList.clear();
 		appList.clear();
 	}
-	//This belongs to example we use to guide our MVC
-	//=============================================================== multiplyBy
-	 /** Multiply current total by a number.
-	  *@param operand Number (as string) to multiply total by.
-	  */
-	 
-	public void printList(String name,int id)
-	 {
-	  Node node = null;
-	  if ("node".equals(name))
-	  {
-	   if(nodeList.containsKey(id))
-	    {
-	    node = nodeList.get(id);
-	       
-	    System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
-	    }
-	    else{
-	    System.out.println("id does not exist");
-	    return;
-	   }
-	  }
-	  
-	  if("trans".equals(name))
-	  {
-	   if(transList.containsKey(id))
-	   {
-	   node = transList.get(id);
-	      
-	   System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" + node.getY());
-	   }
-	   else{
-	   System.out.println("id does not exist");
-	   return;
-	  }
-	  }
-	  
-	  if("app".equals(name))
-	  {
-	   if(appList.containsKey(id))
-	   {
-	   node = appList.get(id);
-	      
-	   System.out.println("id:" + node.getId()+"\t"+"type:"+ node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
-	   }
-	   else{
-	   System.out.println("id does not exist");
-	   return;
-	  }
-	  }
-	  
-	  
-	 } 
+
 	//This belongs to example we use to guide our MVC
 	//=============================================================== multiplyBy
 	/** Multiply current total by a number.

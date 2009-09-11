@@ -31,19 +31,19 @@ public class NetSimController {
 
 		m_model = model;
 		m_view = view;
-		
-		m_model.setValue("1");
-				
+
 		//... Add listeners to the view.
 		view.addSelectKeyListeners(new SelectKeyListeners());
 		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
 		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
-		
-		//This belongs to the example
 		view.addClearListener(new ClearListener());
+//<<<<<<< HEAD
 		view.addMultiplyListener(new MultiplyListener());
 		view.addMenuListener(new MenuListener());
 		model.setValue("1");		
+
+	
+///>>>>>>> 3aaa837148b92a9484bf15599d5815824c8ff6b0
 }
 
 	//======================================== inner class SelectKeyListeners
@@ -252,6 +252,7 @@ public class NetSimController {
 			m_view.reset();
 		}
 	}// end inner class ClearListener
+//<<<<<<< HEAD
 
 	//This belong to the example
 	//========================================== inner class MultiplyListener
@@ -283,9 +284,9 @@ public class NetSimController {
 			}
 			if(e.getActionCommand().compareTo("Open") == 0){
 				m_model.open();
-				m_model.printList("node", 1);
-				m_model.printList("trans", 1);
-				m_model.printList("app", 1);
+				//m_model.printList("node", 1);
+				//m_model.printList("trans", 1);
+				//m_model.printList("app", 1);
 				m_view.rightPane.repaint();
 			}
 			if(e.getActionCommand().compareTo("Quit")==0){
@@ -294,4 +295,6 @@ public class NetSimController {
 		}
 	}
 
+//=======
+//>>>>>>> 3aaa837148b92a9484bf15599d5815824c8ff6b0
 }

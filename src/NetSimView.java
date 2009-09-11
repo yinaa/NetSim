@@ -1,3 +1,4 @@
+//<<<<<<< HEAD
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
@@ -289,4 +290,3 @@ class NetSimView extends JFrame{
 	}
 
 }
-
