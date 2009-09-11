@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -6,23 +7,18 @@ import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
+=======
+>>>>>>> d28250de590f96326e081b560402c0e888af6bed
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
 import javax.swing.JTable;
 
 public class NetSimModel {
-	//... Constants
-	private static final String INITIAL_VALUE = "1";
-	
-	//... Member variable defining state of calculator.
-	private BigInteger m_total;  // The total current value state.
-	
-	//... 
+
 	private HashMap<Integer, Node> nodeList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> transList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> appList = new HashMap<Integer, Node>();
-
 	
 	//============================================================== constructor
 	/** Constructor */
@@ -97,11 +93,11 @@ public class NetSimModel {
 	//==================================================================== reset
 	/** Reset to initial value. */
 	public void reset() {
-		m_total = new BigInteger(INITIAL_VALUE);
 		nodeList.clear();
 		transList.clear();
 		appList.clear();
 	}
+<<<<<<< HEAD
 
 	//This belongs to example we use to guide our MVC
 	//=============================================================== multiplyBy
@@ -209,4 +205,6 @@ public class NetSimModel {
 		      System.err.println("Error: " + e.getMessage());
 		    }
 	}
+=======
+>>>>>>> d28250de590f96326e081b560402c0e888af6bed
 }
