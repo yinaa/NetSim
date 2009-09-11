@@ -30,18 +30,13 @@ public class NetSimController {
 
 		m_model = model;
 		m_view = view;
-		
-		m_model.setValue("1");
-				
+
 		//... Add listeners to the view.
 		view.addSelectKeyListeners(new SelectKeyListeners());
 		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
 		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
-		
-		//This belongs to the example
 		view.addClearListener(new ClearListener());
-		view.addMultiplyListener(new MultiplyListener());
-		model.setValue("1");		
+	
 }
 
 	//======================================== inner class SelectKeyListeners
@@ -250,28 +245,4 @@ public class NetSimController {
 			m_view.reset();
 		}
 	}// end inner class ClearListener
-
-	//This belong to the example
-	//========================================== inner class MultiplyListener
-	/** When a multiplication is requested.
-	 *  1. Get the user input number from the View.
-	 *  2. Call the model to multiply by this number.
-	 *  3. Get the result from the Model.
-	 *  4. Tell the View to display the result.
-	 * If there was an error, tell the View to display it.
-	 */
-	class MultiplyListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			String userInput = "";
-			try {
-				userInput = m_view.getUserInput();
-				m_model.multiplyBy(userInput);
-				m_view.setTotal(m_model.getValue());
-
-			} catch (NumberFormatException nfex) {
-				m_view.showError("Bad input: '" + userInput + "'");
-			}
-		}
-	}//end inner class MultiplyListener
-
 }

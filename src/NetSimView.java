@@ -4,9 +4,6 @@ import java.awt.event.*;
 
 class NetSimView extends JFrame {
 	//... Components
-	private JTextField userInputTextField = new JTextField(5);
-	private JTextField totalTextField     = new JTextField(5);
-	private JButton    multiplyBtn        = new JButton("Multiply");
 	private JButton    clearButton        = new JButton("Clear");
 
 	//Variable declaration
@@ -54,9 +51,6 @@ class NetSimView extends JFrame {
 		//... Set up the logic
 		try {
 			//... Initialize components
-			//totalTextField.setText(ns_model.getValue());
-			totalTextField.setEditable(false);
-
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//Back Pane setup
 			setBackPane();
@@ -127,11 +121,6 @@ class NetSimView extends JFrame {
 	void setBottonLeftPane(){		
 		leftPane.add(bottomLeftPane, JSplitPane.RIGHT);
 		bottomLeftPane.setLayout(new FlowLayout());
-		bottomLeftPane.add(new JLabel("Input"));
-		bottomLeftPane.add(userInputTextField);
-		bottomLeftPane.add(multiplyBtn);
-		bottomLeftPane.add(new JLabel("Total"));
-		bottomLeftPane.add(totalTextField);
 		bottomLeftPane.add(clearButton);
 	}
 
@@ -211,10 +200,6 @@ class NetSimView extends JFrame {
 		rightPane.addMouseMotionListener(ma);
 	}
 
-	void addMultiplyListener(ActionListener mal) {
-		multiplyBtn.addActionListener(mal);
-	}
-
 	void addClearListener(ActionListener cal) {
 		clearButton.addActionListener(cal);
 	}
@@ -258,21 +243,8 @@ class NetSimView extends JFrame {
 	
 	//=================================================================== reset
 	void reset() {
-		totalTextField.setText("1");
 		rightPane.removeAll();
 		rightPane.repaint();
-	}
-
-	String getUserInput() {
-		return userInputTextField.getText();
-	}
-
-	void setTotal(String newTotal) {
-		totalTextField.setText(newTotal);
-	}
-
-	void showError(String errMessage) {
-		JOptionPane.showMessageDialog(this, errMessage);
 	}
 }
 
