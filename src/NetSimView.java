@@ -4,9 +4,7 @@ import java.awt.event.*;
 
 class NetSimView extends JFrame{
 	//... Components
-	private JTextField userInputTextField = new JTextField(5);
 	private JTextField totalTextField     = new JTextField(5);
-	private JButton    multiplyBtn        = new JButton("Multiply");
 	private JButton    clearButton        = new JButton("Clear");
 
 	//Variable declaration
