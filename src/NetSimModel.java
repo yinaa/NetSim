@@ -1,7 +1,7 @@
 import java.util.HashMap;
 
 public class NetSimModel {
-	//... 
+
 	private HashMap<Integer, Node> nodeList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> transList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> appList = new HashMap<Integer, Node>();

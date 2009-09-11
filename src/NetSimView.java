@@ -29,13 +29,6 @@ class NetSimView extends JFrame {
 	private JMenu fileMenu, helpMenu; //editMenu,
 	private JMenuItem  jMenuItem2,  jMenuItem4; //jMenuItem1, jMenuItem3,
 
-	/*	private JLabel posIcon;
-	private ArrayList<Component> selectedComponents = new ArrayList<Component>();
-	private ArrayList<Link> linkList = new ArrayList<Link>();
-	private boolean startDrag = false, drawLink = false;
-	private int initMousePosX, initMousePosY;
-	private Component initComponent= null;*/
-
 	//Icons
 	ImageIcon iconNode  = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/node.png"));
 	ImageIcon iconApp   = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/app.png"));
@@ -179,10 +172,6 @@ class NetSimView extends JFrame {
 	}
 
 	//============================================================ add listeners
-
-	/*	void addRightPaneMouseMotionListeners(MouseAdapter ma) {
-		rightPane.addMouseMotionListener(ma);
-	}*/
 	
 	void addSelectKeyListeners(KeyAdapter e){
 		selectButton.addKeyListener(e);

@@ -20,10 +20,11 @@ public class NetSimController {
 	private int initMousePosX = 0;
 	private int initMousePosY = 0;
 	
+	Component initComponent= null;
+	
 	//Selected components array
 	ArrayList<Component> selectedComponents = new ArrayList<Component>();
 	
-
 	//========================================================== constructor
 	/** Constructor */
 	NetSimController(NetSimModel model, NetSimView view) {
@@ -36,7 +37,6 @@ public class NetSimController {
 		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
 		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
 		view.addClearListener(new ClearListener());
-	
 }
 
 	//======================================== inner class SelectKeyListeners
@@ -54,7 +54,7 @@ public class NetSimController {
 					m_view.rightPane.remove((Component) comp);
 				}
 				m_view.rightPane.repaint();
-				selectedComponents.clear();	//TODO pasar selectedComponents al control	
+				selectedComponents.clear();	
 			}
 		}
 	}
@@ -64,8 +64,7 @@ public class NetSimController {
 	 *  
 	 */  
 	class RightPaneMouseMotionListener extends MouseAdapter {
-		Component initComponent= null;
-		
+
 		public void mouseDragged(MouseEvent me){
 			Graphics g = m_view.rightPane.getGraphics();
 			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());		
@@ -106,7 +105,6 @@ public class NetSimController {
 					}
 					initMousePosX = me.getX();
 					initMousePosY = me.getY();
-					//TODO Change position of the object in the model
 				}		
 				else {
 					g.drawRect(Math.min(initMousePosX, me.getX()), Math.min(initMousePosY, me.getY()),
@@ -126,8 +124,7 @@ public class NetSimController {
 				if (drawLink)
 					g.drawLine(initMousePosX, initMousePosY, me.getX(), me.getY());
 			}
-			m_view.rightPane.repaint();
-			
+			m_view.rightPane.repaint();			
 //TODO	draw link and and relationship to the model	
 //			drawLinks();			
 		}
@@ -160,9 +157,6 @@ public class NetSimController {
 				int id = m_model.insertObject(posX, posY, name);
 				m_view.paintObject(posX, posY, name + "_" + id);
 			}
-			//TODO Insert user given name to each object/component
-
-			//how do I access the components in the right pane?
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
 			ArrayList<Component> selComp = selectedComponents;
 
@@ -195,12 +189,10 @@ public class NetSimController {
 				}
 			}
 			m_view.rightPane.repaint();
-
-			//drawNetworkConnection(me);
 		}
 
 		public void mouseReleased(MouseEvent me){
-			//			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());
+			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());
 			if (startDrag == true && m_view.selectButton.isSelected()) {
 				for (Object comp : m_view.rightPane.getComponents()) {
 					int posX = ((Component) comp).getX();
@@ -222,15 +214,15 @@ public class NetSimController {
 				}
 				m_view.rightPane.repaint();
 			}
-			/*			if(startDrag && m_view.linkButton.isSelected()){
+			if(startDrag && m_view.linkButton.isSelected()){
 				if(!iconComp.equals(m_view.rightPane)&& !iconComp.equals(initComponent)){
-					Link l = new Link(initComponent, iconComp);
-					linkList.add(l);
-					drawLinks();
-
+					//TODO view should paint links and model should add them
+					//Link l = new Link(initComponent, iconComp);
+					//linkList.add(l);
+					//drawLinks();
 				}
 				drawLink = false;
-			}*/
+			}
 			startDrag = false;	
 		}
 	}//end inner class RightPaneMouseListeners
