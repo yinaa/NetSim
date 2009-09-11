@@ -7,9 +7,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
 import javax.swing.JLabel;
-import javax.swing.JTable;
 
 public class NetSimController {
 	//... The Controller interacts with both the Model and View.
@@ -38,16 +36,7 @@ public class NetSimController {
 		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
 		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
 		view.addClearListener(new ClearListener());
-<<<<<<< HEAD
-//<<<<<<< HEAD
-		view.addMultiplyListener(new MultiplyListener());
 		view.addMenuListener(new MenuListener());
-		model.setValue("1");		
-
-	
-///>>>>>>> 3aaa837148b92a9484bf15599d5815824c8ff6b0
-=======
->>>>>>> d28250de590f96326e081b560402c0e888af6bed
 }
 
 	//======================================== inner class SelectKeyListeners
@@ -248,31 +237,7 @@ public class NetSimController {
 			m_view.reset();
 		}
 	}// end inner class ClearListener
-<<<<<<< HEAD
-//<<<<<<< HEAD
 
-	//This belong to the example
-	//========================================== inner class MultiplyListener
-	/** When a multiplication is requested.
-	 *  1. Get the user input number from the View.
-	 *  2. Call the model to multiply by this number.
-	 *  3. Get the result from the Model.
-	 *  4. Tell the View to display the result.
-	 * If there was an error, tell the View to display it.
-	 */
-	class MultiplyListener implements ActionListener {
-		public void actionPerformed(ActionEvent e) {
-			String userInput = "";
-			try {
-				userInput = m_view.getUserInput();
-				m_model.multiplyBy(userInput);
-				m_view.setTotal(m_model.getValue());
-
-			} catch (NumberFormatException nfex) {
-				m_view.showError("Bad input: '" + userInput + "'");
-			}
-		}
-	}//end inner class MultiplyListener
 	//====================================================
 	class MenuListener implements ActionListener {
 		public void actionPerformed (ActionEvent e){
@@ -291,9 +256,4 @@ public class NetSimController {
 			}
 		}
 	}
-
-//=======
-//>>>>>>> 3aaa837148b92a9484bf15599d5815824c8ff6b0
-=======
->>>>>>> d28250de590f96326e081b560402c0e888af6bed
 }
