@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.DataInputStream;
@@ -6,13 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.math.BigInteger;
-=======
->>>>>>> d28250de590f96326e081b560402c0e888af6bed
 import java.util.HashMap;
 import java.util.StringTokenizer;
-
-import javax.swing.JTable;
 
 public class NetSimModel {
 
@@ -97,32 +91,10 @@ public class NetSimModel {
 		transList.clear();
 		appList.clear();
 	}
-<<<<<<< HEAD
 
-	//This belongs to example we use to guide our MVC
-	//=============================================================== multiplyBy
-	/** Multiply current total by a number.
-	 *@param operand Number (as string) to multiply total by.
-	 */
-	public void multiplyBy(String operand) {
-		m_total = m_total.multiply(new BigInteger(operand));
-	}
-
-	//================================================================= setValue
-	/** Set the total value. 
-	 *@param value New value that should be used for the calculator total. 
-	 */
-	public void setValue(String value) {
-		m_total = new BigInteger(value);
-	}
-
-	//================================================================= getValue
-	/** Return current calculator total. */
-	public String getValue() {
-		return m_total.toString();
-	}
 	//================================================================open
 	/** Open saved file. */
+	@SuppressWarnings("deprecation")
 	public void open() {
 		/*NetSimDataFileTableModel model = new NetSimDataFileTableModel("Data.dat");
 		JTable table = new JTable();
@@ -205,6 +177,4 @@ public class NetSimModel {
 		      System.err.println("Error: " + e.getMessage());
 		    }
 	}
-=======
->>>>>>> d28250de590f96326e081b560402c0e888af6bed
 }
