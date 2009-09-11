@@ -2,7 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 
-class NetSimView extends JFrame {
+class NetSimView extends JFrame{
 	//... Components
 	private JTextField userInputTextField = new JTextField(5);
 	private JTextField totalTextField     = new JTextField(5);
@@ -30,7 +30,7 @@ class NetSimView extends JFrame {
 	//Menus
 	private JMenuBar jMenuBar;
 	private JMenu fileMenu, helpMenu; //editMenu,
-	private JMenuItem  jMenuItem2,  jMenuItem4; //jMenuItem1, jMenuItem3,
+	private JMenuItem  jMenuItemOpen, jMenuItem3, jMenuItem2,  jMenuItem4; //jMenuItem1, jMenuItem3,
 
 	/*	private JLabel posIcon;
 	private ArrayList<Component> selectedComponents = new ArrayList<Component>();
@@ -156,9 +156,17 @@ class NetSimView extends JFrame {
 				jMenuItem1.setText("New");
 				//jMenuItem2.setAction(getAppActionMap().get("new"));
 				fileMenu.addSeparator();*/
+				jMenuItem3 = new JMenuItem();
+				fileMenu.add(jMenuItem3);
+				jMenuItem3.setText("Save");
 				jMenuItem2 = new JMenuItem();
+				jMenuItemOpen = new JMenuItem();
+				fileMenu.add(jMenuItemOpen);
+				jMenuItemOpen.setText("Open");
 				fileMenu.add(jMenuItem2);
 				jMenuItem2.setText("Quit");
+				
+				
 				//jMenuItem2.addActionListener(SimpleListener);
 				//jMenuItem2.setAction(getAppActionMap().get("quit"));
 			}		            	
@@ -218,6 +226,11 @@ class NetSimView extends JFrame {
 	void addClearListener(ActionListener cal) {
 		clearButton.addActionListener(cal);
 	}
+	void addMenuListener(ActionListener menu){
+		jMenuItem3.addActionListener(menu);
+		jMenuItem2.addActionListener(menu);
+		jMenuItemOpen.addActionListener(menu);
+	}
 
 	//============================================================ paint Object
 	public void paintObject(int posX, int posY, String name) {
@@ -274,5 +287,6 @@ class NetSimView extends JFrame {
 	void showError(String errMessage) {
 		JOptionPane.showMessageDialog(this, errMessage);
 	}
+
 }
 

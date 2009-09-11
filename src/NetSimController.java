@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 
 import javax.swing.JLabel;
+import javax.swing.JTable;
 
 public class NetSimController {
 	//... The Controller interacts with both the Model and View.
@@ -41,6 +42,7 @@ public class NetSimController {
 		//This belongs to the example
 		view.addClearListener(new ClearListener());
 		view.addMultiplyListener(new MultiplyListener());
+		view.addMenuListener(new MenuListener());
 		model.setValue("1");		
 }
 
@@ -273,5 +275,23 @@ public class NetSimController {
 			}
 		}
 	}//end inner class MultiplyListener
+	//====================================================
+	class MenuListener implements ActionListener {
+		public void actionPerformed (ActionEvent e){
+			if(e.getActionCommand().compareTo("Save") == 0){
+				m_model.save();
+			}
+			if(e.getActionCommand().compareTo("Open") == 0){
+				m_model.open();
+				m_model.printList("node", 1);
+				m_model.printList("trans", 1);
+				m_model.printList("app", 1);
+				m_view.rightPane.repaint();
+			}
+			if(e.getActionCommand().compareTo("Quit")==0){
+				System.exit(0);
+			}
+		}
+	}
 
 }

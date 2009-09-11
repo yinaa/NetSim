@@ -1,5 +1,15 @@
+import java.io.BufferedInputStream;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.HashMap;
+import java.util.StringTokenizer;
+
+import javax.swing.JTable;
 
 public class NetSimModel {
 	//... Constants
@@ -92,7 +102,59 @@ public class NetSimModel {
 		transList.clear();
 		appList.clear();
 	}
-
+	//This belongs to example we use to guide our MVC
+	//=============================================================== multiplyBy
+	 /** Multiply current total by a number.
+	  *@param operand Number (as string) to multiply total by.
+	  */
+	 
+	public void printList(String name,int id)
+	 {
+	  Node node = null;
+	  if ("node".equals(name))
+	  {
+	   if(nodeList.containsKey(id))
+	    {
+	    node = nodeList.get(id);
+	       
+	    System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
+	    }
+	    else{
+	    System.out.println("id does not exist");
+	    return;
+	   }
+	  }
+	  
+	  if("trans".equals(name))
+	  {
+	   if(transList.containsKey(id))
+	   {
+	   node = transList.get(id);
+	      
+	   System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" + node.getY());
+	   }
+	   else{
+	   System.out.println("id does not exist");
+	   return;
+	  }
+	  }
+	  
+	  if("app".equals(name))
+	  {
+	   if(appList.containsKey(id))
+	   {
+	   node = appList.get(id);
+	      
+	   System.out.println("id:" + node.getId()+"\t"+"type:"+ node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
+	   }
+	   else{
+	   System.out.println("id does not exist");
+	   return;
+	  }
+	  }
+	  
+	  
+	 } 
 	//This belongs to example we use to guide our MVC
 	//=============================================================== multiplyBy
 	/** Multiply current total by a number.
@@ -114,5 +176,89 @@ public class NetSimModel {
 	/** Return current calculator total. */
 	public String getValue() {
 		return m_total.toString();
+	}
+	//================================================================open
+	/** Open saved file. */
+	public void open() {
+		/*NetSimDataFileTableModel model = new NetSimDataFileTableModel("Data.dat");
+		JTable table = new JTable();
+		table.setModel(model);
+		table.createDefaultColumnsFromModel();
+		//table.*/
+		reset();
+		File f = new File("data.txt");
+		FileInputStream fis = null;
+		try{
+			fis = new FileInputStream(f);
+			}catch(Exception e){
+				System.out.println(e.toString());
+			} 
+		BufferedInputStream bis = new BufferedInputStream(fis); 
+		DataInputStream dis = new DataInputStream(bis); 
+		String data = null;
+		try { 
+			   while ( (data=dis.readLine()) != null ) { 
+			       StringTokenizer st = new StringTokenizer(data," | ");
+			       while(st.hasMoreElements()){
+			    	   int id = Integer.parseInt(st.nextToken());
+			    	   String name = st.nextToken();
+			    	   int x = Integer.parseInt(st.nextToken());
+			    	   int y = Integer.parseInt(st.nextToken());
+			    	   Node nd = new Node(id,x,y,name);
+			    	   if(name.compareTo("trans") == 0){
+			    		   transList.put(id, nd);
+			    	   }else if(name.compareTo("app")==0){
+			    		   appList.put(id, nd);
+			    	   }else if(name.compareTo("node")==0){
+			    		   nodeList.put(id, nd);
+			    	   }
+			    	   
+			       }
+			   } 
+
+			} catch (IOException e) { 
+			   System.out.println(e.toString());
+			} 	
+		//
+	//	return table;
+		
+	}
+	//=================================================================save
+	/** Save data. */
+	public void save() {
+		try{
+		    // Create file 
+		    FileWriter fstream = new FileWriter("data.txt");
+		    BufferedWriter out = new BufferedWriter(fstream);
+		    //out.write("id | name | x | y\n");
+		    for (int id=1; id<= 1000; id++){
+				if (transList.containsKey(id)){
+					Node node = transList.get(id);
+					String nodeData = node.getId()+ " | " + node.getName() + " | " +
+									node.getX()+ " | "+node.getY() +"\n";
+					out.write(nodeData);
+				}
+			}
+		    for (int id=1; id<= 1000; id++){
+				if (nodeList.containsKey(id)){
+					Node node = nodeList.get(id);
+					String nodeData = node.getId()+ " | " + node.getName() + " | " +
+									node.getX()+ " | "+node.getY() +"\n";
+					out.write(nodeData);
+				}
+			}	
+		    for (int id=1; id<= 1000; id++){
+				if (appList.containsKey(id)){
+					Node node = appList.get(id);
+					String nodeData = node.getId()+ " | " + node.getName() + " | " +
+									node.getX()+ " | "+node.getY() +"\n";
+					out.write(nodeData);
+				}
+			}	
+		    //Close the output stream
+		    out.close();
+		    }catch (Exception e){//Catch exception if any
+		      System.err.println("Error: " + e.getMessage());
+		    }
 	}
 }
