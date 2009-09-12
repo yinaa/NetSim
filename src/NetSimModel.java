@@ -177,4 +177,14 @@ public class NetSimModel {
 		      System.err.println("Error: " + e.getMessage());
 		    }
 	}
+	//===
+	public HashMap<Integer, Node> getHash(String name){
+		if(name.compareTo("trans") == 0)
+			return transList;
+		else if (name.compareTo("node") == 0)
+			return nodeList;
+		else if (name.compareTo("app") == 0)
+			return appList;
+		return null;
+	}
 }
