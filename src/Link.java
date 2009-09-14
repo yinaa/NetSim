@@ -1,8 +1,9 @@
 public class Link {
-	public String nodeElement = "nodeElement", appLink = "appLink", transLink = "transLink";
 	public String initType = null, endType = null;
 	public int initId, endId;
 	
+	//========================================================== constructor
+	/** Constructor */
 	Link(String initType, int initId, String endType, int endId){
 		this.initType = initType;
 		this.initId = initId;
@@ -10,4 +11,5 @@ public class Link {
 		this.endId = endId;		
 	}
 }
+
 

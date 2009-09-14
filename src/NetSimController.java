@@ -22,12 +22,12 @@ public class NetSimController {
 	private String endType = null;
 	private int initId = 0;
 	private int endId = 0;
-	
+
 	Component initComponent= null;
-	
+
 	//Selected components array
 	ArrayList<Component> selectedComponents = new ArrayList<Component>();
-	
+
 	//========================================================== constructor
 	/** Constructor */
 	NetSimController(NetSimModel model, NetSimView view) {
@@ -41,8 +41,17 @@ public class NetSimController {
 		view.addRightPaneMouseMotionListener(new RightPaneMouseMotionListener());
 		view.addClearListener(new ClearListener());
 		view.addMenuListener(new MenuListener());
-}
+	}
 
+	public void drawLinks(){
+		Graphics g = m_view.rightPane.getGraphics();
+		m_view.rightPane.update(g);
+		int[][] linkCoords = m_model.linkCoordinates();
+		for (int i=0; i<linkCoords.length; i++){
+			g.drawLine(linkCoords[i][0], linkCoords[i][1], linkCoords[i][2], linkCoords[i][3]);
+		}
+	}
+	
 	//======================================== inner class SelectKeyListeners
 	/**  1. If selected button is selected, and the DEL key is pressed
 	 *      the selected objects will be removed from the view and the model
@@ -58,9 +67,7 @@ public class NetSimController {
 					m_model.removeLink(type, id);
 					m_view.rightPane.remove((Component) comp);
 				}
-				//TODO remove links from the view
-				//m_view.drawlinks();
-				m_view.rightPane.repaint();
+				drawLinks();				
 				selectedComponents.clear();	
 			}
 		}
@@ -73,11 +80,9 @@ public class NetSimController {
 	class RightPaneMouseMotionListener extends MouseAdapter {
 
 		public void mouseDragged(MouseEvent me){
-			Graphics g = m_view.rightPane.getGraphics();
 			Component iconComp = m_view.rightPane.getComponentAt(me.getX(), me.getY());		
-			
-			System.out.println("X" + me.getX()+ "Y" +me.getY());
-			
+			Graphics g = m_view.rightPane.getGraphics();
+		
 			if (m_view.selectButton.isSelected()) {
 
 				if (!startDrag) {
@@ -97,7 +102,7 @@ public class NetSimController {
 				}
 				int deltaX = me.getX() - initMousePosX;
 				int deltaY = me.getY() - initMousePosY;
-				
+
 				if (!selectedComponents.isEmpty() && !me.isControlDown()) {
 					deltaX = me.getX() - initMousePosX;
 					deltaY = me.getY() - initMousePosY;
@@ -134,9 +139,7 @@ public class NetSimController {
 				if (drawLink)
 					g.drawLine(initMousePosX, initMousePosY, me.getX(), me.getY());
 			}
-			m_view.rightPane.repaint();			
-//TODO	draw link and and relationship to the model	
-//			drawLinks();			
+			drawLinks();
 		}
 	}
 
@@ -222,22 +225,20 @@ public class NetSimController {
 						}
 					}
 				}
-				m_view.rightPane.repaint();
+				drawLinks();
 			}
 			if(startDrag && m_view.linkButton.isSelected()){
 				if(!iconComp.equals(m_view.rightPane)&& !iconComp.equals(initComponent)){
 					String name = ((JLabel)iconComp).getText();
 					endType = name.split("_")[0];
 					endId = new Integer(name.split("_")[1]);
-				
+
 					m_model.insertLink(initType, initId, endType, endId);
-				
-					//TODO view should paint links
-					//m_view.drawLinks();
+					drawLinks();
 				}
 				drawLink = false;
 			}
-			startDrag = false;	
+			startDrag = false;				
 		}
 	}//end inner class RightPaneMouseListeners
 
@@ -275,7 +276,7 @@ public class NetSimController {
 						String name = "app";
 						int id = m_model.getHash("app").get(i).getId();
 						m_view.paintObject(posX, posY, name + "_" + id);					
-						}
+					}
 					if(m_model.getHash("node").containsKey(i)){
 						int posX = m_model.getHash("node").get(i).getX();
 						int posY = m_model.getHash("node").get(i).getY();

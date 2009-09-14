@@ -80,9 +80,47 @@ public class NetSimModel {
 	//=============================================================== remove link
 	/** remove link */
 	public void removeLink(String type, int id){
-
+		for(Link l: linkList){
+			if (type.equals(l.initType) && id==l.initId || type.equals(l.endType) && id==l.endId ){
+				linkList.remove(l);
+			}
+		}
 	}
 
+	//=================================================== return link Coordinates
+	public int[][] linkCoordinates(){
+		int[][] linkCoords = new int[linkList.size()][4];
+		int i = 0;
+		
+		for(Link l: linkList){
+			if (l.initType.compareTo("node")==0){
+				linkCoords[i][0] = (nodeList.get(l.initId)).getX();
+				linkCoords[i][1] = (nodeList.get(l.initId)).getY();
+			}
+			else if (l.initType.compareTo("trans")==0){
+				linkCoords[i][0] = (transList.get(l.initId)).getX();
+				linkCoords[i][1] = (transList.get(l.initId)).getY();
+			}
+			else if (l.initType.compareTo("app")==0){
+				linkCoords[i][0] = (appList.get(l.initId)).getX();
+				linkCoords[i][1] = (appList.get(l.initId)).getY();
+			}
+			if (l.endType.compareTo("node")==0){
+				linkCoords[i][2] = (nodeList.get(l.endId)).getX();
+				linkCoords[i][3] = (nodeList.get(l.endId)).getY();
+			}
+			else if (l.endType.compareTo("trans")==0){
+				linkCoords[i][2] = (transList.get(l.endId)).getX();
+				linkCoords[i][3] = (transList.get(l.endId)).getY();
+			}
+			else if (l.endType.compareTo("app")==0){
+				linkCoords[i][2] = (appList.get(l.endId)).getX();
+				linkCoords[i][3] = (appList.get(l.endId)).getY();
+			}
+			i++;
+		}
+		return linkCoords;
+	}
 	//=========================================================== update position 
 	public void updatePosition(String type, int id, int posX, int posY) {
 		if (type.compareTo("node")==0){

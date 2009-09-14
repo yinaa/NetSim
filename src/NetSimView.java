@@ -239,12 +239,7 @@ class NetSimView extends JFrame{
 			posIcon.setLocation(posX, posY);
 		}
 	}
-	
-	//============================================================== draw Links
-	public void drawLinks() {
-		
-	}
-	
+
 	//=================================================================== reset
 	void reset() {
 		totalTextField.setText("1");
