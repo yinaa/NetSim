@@ -140,8 +140,6 @@ class NetSimView extends JFrame{
 				jMenuItem1 = new JMenuItem();
 				fileMenu.add(jMenuItem1);
 				jMenuItem1.setText("New");
-				//jMenuItem2.setAction(getAppActionMap().get("new"));
-				fileMenu.addSeparator();
 				jMenuItem3 = new JMenuItem();
 				fileMenu.add(jMenuItem3);
 				jMenuItem3.setText("Save");
@@ -149,6 +147,7 @@ class NetSimView extends JFrame{
 				jMenuItemOpen = new JMenuItem();
 				fileMenu.add(jMenuItemOpen);
 				jMenuItemOpen.setText("Open");
+				fileMenu.addSeparator();
 				fileMenu.add(jMenuItem2);
 				jMenuItem2.setText("Quit");
 			}		            	
@@ -239,6 +238,11 @@ class NetSimView extends JFrame{
 			rightPane.add(posIcon);
 			posIcon.setLocation(posX, posY);
 		}
+	}
+	
+	//============================================================== draw Links
+	public void drawLinks() {
+		
 	}
 	
 	//=================================================================== reset

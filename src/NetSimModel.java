@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.StringTokenizer;
 
@@ -13,7 +14,8 @@ public class NetSimModel {
 	private HashMap<Integer, Node> nodeList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> transList = new HashMap<Integer, Node>();
 	private HashMap<Integer, Node> appList = new HashMap<Integer, Node>();
-	
+	private ArrayList<Link> linkList = new ArrayList<Link>();
+
 	//============================================================== constructor
 	/** Constructor */
 	NetSimModel() {
@@ -53,7 +55,7 @@ public class NetSimModel {
 		}		
 		return id;
 	}
-	
+
 	//=============================================================== remove node
 	/** remove node */
 	public void removeObject(String type, int id){
@@ -66,6 +68,19 @@ public class NetSimModel {
 		else if (type.compareTo("app")==0){
 			appList.remove(id);
 		}
+	}
+
+	//=============================================================== insert link
+	/** insert link */
+	public void insertLink(String initType, int initId, String endType, int endId){
+		Link link = new Link(initType, initId, endType, endId);
+		linkList.add(link);
+	}
+
+	//=============================================================== remove link
+	/** remove link */
+	public void removeLink(String type, int id){
+		
 	}
 
 	//=========================================================== update position 
@@ -83,7 +98,7 @@ public class NetSimModel {
 			app.setPosition(posX, posY);
 		}		
 	}
-	
+
 	//==================================================================== reset
 	/** Reset to initial value. */
 	public void reset() {
@@ -106,75 +121,77 @@ public class NetSimModel {
 		FileInputStream fis = null;
 		try{
 			fis = new FileInputStream(f);
-			}catch(Exception e){
-				System.out.println(e.toString());
-			} 
+		}
+		catch(Exception e){
+			System.out.println(e.toString());
+		} 
 		BufferedInputStream bis = new BufferedInputStream(fis); 
 		DataInputStream dis = new DataInputStream(bis); 
 		String data = null;
 		try { 
-			   while ( (data=dis.readLine()) != null ) { 
-			       StringTokenizer st = new StringTokenizer(data," | ");
-			       while(st.hasMoreElements()){
-			    	   int id = Integer.parseInt(st.nextToken());
-			    	   String name = st.nextToken();
-			    	   int x = Integer.parseInt(st.nextToken());
-			    	   int y = Integer.parseInt(st.nextToken());
-			    	   Node nd = new Node(id,x,y,name);
-			    	   if(name.compareTo("trans") == 0){
-			    		   transList.put(id, nd);
-			    	   }else if(name.compareTo("app")==0){
-			    		   appList.put(id, nd);
-			    	   }else if(name.compareTo("node")==0){
-			    		   nodeList.put(id, nd);
-			    	   }
-			    	   
-			       }
-			   } 
+			while ( (data=dis.readLine()) != null ) { 
+				StringTokenizer st = new StringTokenizer(data," | ");
+				while(st.hasMoreElements()){
+					int id = Integer.parseInt(st.nextToken());
+					String name = st.nextToken();
+					int x = Integer.parseInt(st.nextToken());
+					int y = Integer.parseInt(st.nextToken());
+					Node nd = new Node(id,x,y,name);
+					if(name.compareTo("trans") == 0){
+						transList.put(id, nd);
+					}
+					else if(name.compareTo("app")==0){
+						appList.put(id, nd);
+					}
+					else if(name.compareTo("node")==0){
+						nodeList.put(id, nd);
+					}
+				}
+			} 
+		} 
+		catch (IOException e) { 
+			System.out.println(e.toString());
+		} 	
+		//	return table;
 
-			} catch (IOException e) { 
-			   System.out.println(e.toString());
-			} 	
-		//
-	//	return table;
-		
 	}
 	//=================================================================save
 	/** Save data. */
 	public void save() {
 		try{
-		    // Create file 
-		    FileWriter fstream = new FileWriter("data.txt");
-		    BufferedWriter out = new BufferedWriter(fstream);
-		    //out.write("id | name | x | y\n");
-		    for (int id=1; id<= 1000; id++){
+			// Create file 
+			FileWriter fstream = new FileWriter("data.txt");
+			BufferedWriter out = new BufferedWriter(fstream);
+			//out.write("id | name | x | y\n");
+			for (int id=1; id<= 1000; id++){
 				if (transList.containsKey(id)){
 					Node node = transList.get(id);
 					String nodeData = node.getId()+ " | " + node.getName() + " | " +
-									node.getX()+ " | "+node.getY() +"\n";
+					node.getX()+ " | "+node.getY() +"\n";
 					out.write(nodeData);
 				}
 			}
-		    for (int id=1; id<= 1000; id++){
+			for (int id=1; id<= 1000; id++){
 				if (nodeList.containsKey(id)){
 					Node node = nodeList.get(id);
 					String nodeData = node.getId()+ " | " + node.getName() + " | " +
-									node.getX()+ " | "+node.getY() +"\n";
+					node.getX()+ " | "+node.getY() +"\n";
 					out.write(nodeData);
 				}
 			}	
-		    for (int id=1; id<= 1000; id++){
+			for (int id=1; id<= 1000; id++){
 				if (appList.containsKey(id)){
 					Node node = appList.get(id);
 					String nodeData = node.getId()+ " | " + node.getName() + " | " +
-									node.getX()+ " | "+node.getY() +"\n";
+					node.getX()+ " | "+node.getY() +"\n";
 					out.write(nodeData);
 				}
 			}	
-		    //Close the output stream
-		    out.close();
-		    }catch (Exception e){//Catch exception if any
-		      System.err.println("Error: " + e.getMessage());
-		    }
+			//Close the output stream
+			out.close();
+		}
+		catch (Exception e){//Catch exception if any
+			System.err.println("Error: " + e.getMessage());
+		}
 	}
 }

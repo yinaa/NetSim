@@ -18,6 +18,10 @@ public class NetSimController {
 	private boolean drawLink = false;
 	private int initMousePosX = 0;
 	private int initMousePosY = 0;
+	private String initType = null;
+	private String endType = null;
+	private int initId = 0;
+	private int endId = 0;
 	
 	Component initComponent= null;
 	
@@ -51,8 +55,12 @@ public class NetSimController {
 					String type = name.split("_")[0];
 					int id = new Integer(name.split("_")[1]);
 					m_model.removeObject(type, id);
+					m_model.removeLink(type, id);
 					m_view.rightPane.remove((Component) comp);
 				}
+				//TODO remove links from the view
+				//m_view.drawlinks();
+				
 				m_view.rightPane.repaint();
 				selectedComponents.clear();	
 			}
@@ -118,6 +126,9 @@ public class NetSimController {
 					startDrag = true;
 					if(!iconComp.equals(m_view.rightPane)){
 						initComponent = iconComp;
+						String name = ((JLabel)iconComp).getText();
+						initType = name.split("_")[0];
+						initId = new Integer(name.split("_")[1]);
 						drawLink = true;
 					}
 				}
@@ -216,10 +227,14 @@ public class NetSimController {
 			}
 			if(startDrag && m_view.linkButton.isSelected()){
 				if(!iconComp.equals(m_view.rightPane)&& !iconComp.equals(initComponent)){
-					//TODO view should paint links and model should add them
-					//Link l = new Link(initComponent, iconComp);
-					//linkList.add(l);
-					//drawLinks();
+					String name = ((JLabel)iconComp).getText();
+					endType = name.split("_")[0];
+					endId = new Integer(name.split("_")[1]);
+				
+					m_model.insertLink(initType, initId, endType, endId);
+				
+					//TODO view should paint links
+					//m_view.drawLinks();
 				}
 				drawLink = false;
 			}
