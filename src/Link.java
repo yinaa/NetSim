@@ -12,6 +12,5 @@ public class Link {
 		this.endType = endType;
 		this.endId = endId;		
 	}
-	
 }
 

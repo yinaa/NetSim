@@ -60,7 +60,6 @@ public class NetSimController {
 				}
 				//TODO remove links from the view
 				//m_view.drawlinks();
-				
 				m_view.rightPane.repaint();
 				selectedComponents.clear();	
 			}
@@ -260,10 +259,31 @@ public class NetSimController {
 				m_model.save();
 			}
 			if(e.getActionCommand().compareTo("Open") == 0){
+				m_view.reset();
 				m_model.open();
-				//m_model.printList("node", 1);
-				//m_model.printList("trans", 1);
-				//m_model.printList("app", 1);
+				for (int i = 1; i < 100; i++) {
+					if(m_model.getHash("trans").containsKey(i)){
+						int posX = m_model.getHash("trans").get(i).getX();
+						int posY = m_model.getHash("trans").get(i).getY();
+						String name = "trans";
+						int id = m_model.getHash("trans").get(i).getId();
+						m_view.paintObject(posX, posY, name + "_" + id);
+					}
+					if(m_model.getHash("app").containsKey(i)){
+						int posX = m_model.getHash("app").get(i).getX();
+						int posY = m_model.getHash("app").get(i).getY();
+						String name = "app";
+						int id = m_model.getHash("app").get(i).getId();
+						m_view.paintObject(posX, posY, name + "_" + id);					
+						}
+					if(m_model.getHash("node").containsKey(i)){
+						int posX = m_model.getHash("node").get(i).getX();
+						int posY = m_model.getHash("node").get(i).getY();
+						String name = "node";
+						int id = m_model.getHash("node").get(i).getId();
+						m_view.paintObject(posX, posY, name + "_" + id);
+					}
+				}
 				m_view.rightPane.repaint();
 			}
 			if(e.getActionCommand().compareTo("Quit")==0){

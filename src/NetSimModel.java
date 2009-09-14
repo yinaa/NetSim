@@ -80,7 +80,7 @@ public class NetSimModel {
 	//=============================================================== remove link
 	/** remove link */
 	public void removeLink(String type, int id){
-		
+
 	}
 
 	//=========================================================== update position 
@@ -107,22 +107,19 @@ public class NetSimModel {
 		appList.clear();
 	}
 
-	//================================================================open
-	/** Open saved file. */
 	@SuppressWarnings("deprecation")
 	public void open() {
 		/*NetSimDataFileTableModel model = new NetSimDataFileTableModel("Data.dat");
-		JTable table = new JTable();
-		table.setModel(model);
-		table.createDefaultColumnsFromModel();
-		//table.*/
+	JTable table = new JTable();
+	table.setModel(model);
+	table.createDefaultColumnsFromModel();
+	//table.*/
 		reset();
 		File f = new File("data.txt");
 		FileInputStream fis = null;
 		try{
 			fis = new FileInputStream(f);
-		}
-		catch(Exception e){
+		}catch(Exception e){
 			System.out.println(e.toString());
 		} 
 		BufferedInputStream bis = new BufferedInputStream(fis); 
@@ -139,21 +136,18 @@ public class NetSimModel {
 					Node nd = new Node(id,x,y,name);
 					if(name.compareTo("trans") == 0){
 						transList.put(id, nd);
-					}
-					else if(name.compareTo("app")==0){
+					}else if(name.compareTo("app")==0){
 						appList.put(id, nd);
-					}
-					else if(name.compareTo("node")==0){
+					}else if(name.compareTo("node")==0){
 						nodeList.put(id, nd);
 					}
 				}
 			} 
-		} 
-		catch (IOException e) { 
+		} catch (IOException e) { 
 			System.out.println(e.toString());
-		} 	
-		//	return table;
-
+		} 
+		//
+		// return table;
 	}
 	//=================================================================save
 	/** Save data. */
@@ -178,7 +172,7 @@ public class NetSimModel {
 					node.getX()+ " | "+node.getY() +"\n";
 					out.write(nodeData);
 				}
-			}	
+			} 
 			for (int id=1; id<= 1000; id++){
 				if (appList.containsKey(id)){
 					Node node = appList.get(id);
@@ -186,12 +180,21 @@ public class NetSimModel {
 					node.getX()+ " | "+node.getY() +"\n";
 					out.write(nodeData);
 				}
-			}	
+			} 
 			//Close the output stream
 			out.close();
-		}
-		catch (Exception e){//Catch exception if any
+		}catch (Exception e){//Catch exception if any
 			System.err.println("Error: " + e.getMessage());
 		}
+	}
+	//===
+	public HashMap<Integer, Node> getHash(String name){
+		if(name.compareTo("trans") == 0)
+			return transList;
+		else if (name.compareTo("node") == 0)
+			return nodeList;
+		else if (name.compareTo("app") == 0)
+			return appList;
+		return null;
 	}
 }

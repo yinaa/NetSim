@@ -249,6 +249,8 @@ class NetSimView extends JFrame{
 	void reset() {
 		totalTextField.setText("1");
 		rightPane.removeAll();
+		repaint();
 		rightPane.repaint();
 	}
+
 }
