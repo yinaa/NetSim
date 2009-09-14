@@ -1,10 +1,7 @@
-import java.awt.Component;
-
 public class Link {
 	public String nodeElement = "nodeElement", appLink = "appLink", transLink = "transLink";
-	private String initType = null, endType = null;
-	private int initId, endId;
-	public Component lastComponent = null;
+	public String initType = null, endType = null;
+	public int initId, endId;
 	
 	Link(String initType, int initId, String endType, int endId){
 		this.initType = initType;
