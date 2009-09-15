@@ -287,6 +287,12 @@ public class NetSimController {
 				}
 				m_view.rightPane.repaint();
 			}
+			
+			if(e.getActionCommand().compareTo("About")==0){
+				
+				
+			}
+			
 			if(e.getActionCommand().compareTo("Quit")==0){
 				System.exit(0);
 			}

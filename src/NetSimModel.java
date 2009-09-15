@@ -235,4 +235,52 @@ public class NetSimModel {
 			return appList;
 		return null;
 	}
+	
+	public void printList(String name,int id)
+	{
+		Node node = null;
+		if ("node".equals(name))
+		{
+			if(nodeList.containsKey(id))
+				{
+				node = nodeList.get(id);
+							
+				System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
+				}
+				else{
+				System.out.println("id does not exist");
+				return;
+			}
+		}
+		
+		if("trans".equals(name))
+		{
+			if(transList.containsKey(id))
+			{
+			node = transList.get(id);
+						
+			System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" + node.getY());
+			}
+			else{
+			System.out.println("id does not exist");
+			return;
+		}
+		}
+		
+		if("app".equals(name))
+		{
+			if(appList.containsKey(id))
+			{
+			node = appList.get(id);
+						
+			System.out.println("id:" + node.getId()+"\t"+"type:"+ node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
+			}
+			else{
+			System.out.println("id does not exist");
+			return;
+		}
+		}
+		
+		
+	}
 }

@@ -201,6 +201,7 @@ class NetSimView extends JFrame{
 		jMenuItem3.addActionListener(menu);
 		jMenuItem2.addActionListener(menu);
 		jMenuItemOpen.addActionListener(menu);
+		jMenuItem4.addActionListener(menu);
 	}
 
 	//============================================================ paint Object
@@ -249,3 +250,5 @@ class NetSimView extends JFrame{
 	}
 
 }
+
+
