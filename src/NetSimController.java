@@ -34,7 +34,6 @@ public class NetSimController {
 
 		m_model = model;
 		m_view = view;
-
 		//... Add listeners to the view.
 		view.addSelectKeyListeners(new SelectKeyListeners());
 		view.addRightPaneMouseListeners(new RightPaneMouseListeners());	
@@ -201,6 +200,7 @@ public class NetSimController {
 					selComp.clear();
 				}
 			}
+			drawLinks();
 			m_view.rightPane.repaint();
 		}
 
@@ -262,6 +262,7 @@ public class NetSimController {
 			if(e.getActionCommand().compareTo("Open") == 0){
 				m_view.reset();
 				m_model.open();
+				//drawLinks();
 				for (int i = 1; i < 100; i++) {
 					if(m_model.getHash("trans").containsKey(i)){
 						int posX = m_model.getHash("trans").get(i).getX();
@@ -285,6 +286,8 @@ public class NetSimController {
 						m_view.paintObject(posX, posY, name + "_" + id);
 					}
 				}
+
+				drawLinks();
 				m_view.rightPane.repaint();
 			}
 			

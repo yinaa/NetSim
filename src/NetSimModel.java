@@ -183,6 +183,31 @@ public class NetSimModel {
 			} 
 		} catch (IOException e) { 
 			System.out.println(e.toString());
+			}
+			f = new File("dataLink.txt");
+			fis = null;
+			try{
+				fis = new FileInputStream(f);
+			}catch(Exception e1){
+				System.out.println(e1.toString());
+			} 
+			bis = new BufferedInputStream(fis); 
+			dis = new DataInputStream(bis); 
+			data = null;
+			try { 
+				while ( (data=dis.readLine()) != null ) { 
+					StringTokenizer st = new StringTokenizer(data," | ");
+					while(st.hasMoreElements()){
+						String initType = st.nextToken();
+						int initId = Integer.parseInt(st.nextToken());
+						String endType = st.nextToken();
+						int endId = Integer.parseInt(st.nextToken());
+						Link l = new Link(initType,initId,endType,endId);
+						linkList.add(l);
+					}
+				} 
+			} catch (IOException e2) { 
+				System.out.println(e2.toString());
 		} 
 		//
 		// return table;
@@ -224,6 +249,23 @@ public class NetSimModel {
 		}catch (Exception e){//Catch exception if any
 			System.err.println("Error: " + e.getMessage());
 		}
+		try{
+			// Create file 
+			FileWriter fstream2 = new FileWriter("dataLink.txt");
+			BufferedWriter out2 = new BufferedWriter(fstream2);
+			//out.write("id | name | x | y\n");
+			Link next = null;
+			for (int i=0; i<=1000; i++){
+				if(linkList.size() <= i)
+					break;
+				next = linkList.get(i);
+				String nextData = next.initType + " | " + next.initId + " | " +
+				next.endType+ " | "+next.endId +"\n";
+				out2.write(nextData);
+				}
+			out2.close();
+		}catch(Exception e){System.out.println(e.toString());}
+			
 	}
 	//===
 	public HashMap<Integer, Node> getHash(String name){
@@ -234,6 +276,9 @@ public class NetSimModel {
 		else if (name.compareTo("app") == 0)
 			return appList;
 		return null;
+	}
+	public ArrayList<Link> getLinkList (){
+		return linkList;
 	}
 	
 	public void printList(String name,int id)
