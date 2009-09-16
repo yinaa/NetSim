@@ -62,11 +62,12 @@ public class NetSimController {
 					String name = ((JLabel)comp).getText();
 					String type = name.split("_")[0];
 					int id = new Integer(name.split("_")[1]);
-					m_model.removeObject(type, id);
-					m_model.removeLink(type, id);
 					m_view.rightPane.remove((Component) comp);
+					m_model.removeObject(type, id);	
+					m_model.removeLink(type, id);
+					drawLinks();
 				}
-				drawLinks();				
+								
 				selectedComponents.clear();	
 			}
 		}
@@ -285,8 +286,9 @@ public class NetSimController {
 						int id = m_model.getHash("node").get(i).getId();
 						m_view.paintObject(posX, posY, name + "_" + id);
 					}
+					drawLinks();
 				}
-				drawLinks();
+				
 			}
 			
 			if(e.getActionCommand().compareTo("New")==0){

@@ -81,7 +81,7 @@ public class NetSimModel {
 	/** remove link */
 	public void removeLink(String type, int id){
 		for(Link l: linkList){
-			if (type.equals(l.initType) && id==l.initId || type.equals(l.endType) && id==l.endId ){
+			if (type.compareTo(l.initType)==0 && id==l.initId || type.compareTo(l.endType)==0 && id==l.endId ){
 				linkList.remove(l);
 			}
 		}
@@ -91,7 +91,7 @@ public class NetSimModel {
 	public int[][] linkCoordinates(){
 		int[][] linkCoords = new int[linkList.size()][4];
 		int i = 0;
-		
+
 		for(Link l: linkList){
 			if (l.initType.compareTo("node")==0){
 				linkCoords[i][0] = (nodeList.get(l.initId)).getX();
@@ -184,31 +184,31 @@ public class NetSimModel {
 			} 
 		} catch (IOException e) { 
 			System.out.println(e.toString());
-			}
-			f = new File("dataLink.txt");
-			fis = null;
-			try{
-				fis = new FileInputStream(f);
-			}catch(Exception e1){
-				System.out.println(e1.toString());
+		}
+		f = new File("dataLink.txt");
+		fis = null;
+		try{
+			fis = new FileInputStream(f);
+		}catch(Exception e1){
+			System.out.println(e1.toString());
+		} 
+		bis = new BufferedInputStream(fis); 
+		dis = new DataInputStream(bis); 
+		data = null;
+		try { 
+			while ( (data=dis.readLine()) != null ) { 
+				StringTokenizer st = new StringTokenizer(data," | ");
+				while(st.hasMoreElements()){
+					String initType = st.nextToken();
+					int initId = Integer.parseInt(st.nextToken());
+					String endType = st.nextToken();
+					int endId = Integer.parseInt(st.nextToken());
+					Link l = new Link(initType,initId,endType,endId);
+					linkList.add(l);
+				}
 			} 
-			bis = new BufferedInputStream(fis); 
-			dis = new DataInputStream(bis); 
-			data = null;
-			try { 
-				while ( (data=dis.readLine()) != null ) { 
-					StringTokenizer st = new StringTokenizer(data," | ");
-					while(st.hasMoreElements()){
-						String initType = st.nextToken();
-						int initId = Integer.parseInt(st.nextToken());
-						String endType = st.nextToken();
-						int endId = Integer.parseInt(st.nextToken());
-						Link l = new Link(initType,initId,endType,endId);
-						linkList.add(l);
-					}
-				} 
-			} catch (IOException e2) { 
-				System.out.println(e2.toString());
+		} catch (IOException e2) { 
+			System.out.println(e2.toString());
 		} 
 		//
 		// return table;
@@ -263,12 +263,12 @@ public class NetSimModel {
 				String nextData = next.initType + " | " + next.initId + " | " +
 				next.endType+ " | "+next.endId +"\n";
 				out2.write(nextData);
-				}
+			}
 			out2.close();
 		}catch(Exception e){System.out.println(e.toString());}
-			
+
 	}
-	
+
 	//===
 	public HashMap<Integer, Node> getHash(String name){
 		if(name.compareTo("trans") == 0)
@@ -282,53 +282,53 @@ public class NetSimModel {
 	public ArrayList<Link> getLinkList (){
 		return linkList;
 	}
-	
+
 	public void printList(String name,int id)
 	{
 		Node node = null;
 		if ("node".equals(name))
 		{
 			if(nodeList.containsKey(id))
-				{
+			{
 				node = nodeList.get(id);
-							
+
 				System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
-				}
-				else{
+			}
+			else{
 				System.out.println("id does not exist");
 				return;
 			}
 		}
-		
+
 		if("trans".equals(name))
 		{
 			if(transList.containsKey(id))
 			{
-			node = transList.get(id);
-						
-			System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" + node.getY());
+				node = transList.get(id);
+
+				System.out.println("id:" + node.getId()+"\t"+"type:"+node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" + node.getY());
 			}
 			else{
-			System.out.println("id does not exist");
-			return;
+				System.out.println("id does not exist");
+				return;
+			}
 		}
-		}
-		
+
 		if("app".equals(name))
 		{
 			if(appList.containsKey(id))
 			{
-			node = appList.get(id);
-						
-			System.out.println("id:" + node.getId()+"\t"+"type:"+ node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
+				node = appList.get(id);
+
+				System.out.println("id:" + node.getId()+"\t"+"type:"+ node.getName()+ "\t"+"POX:" + node.getX()+ "\t  "+"POY:" +node.getY());
 			}
 			else{
-			System.out.println("id does not exist");
-			return;
+				System.out.println("id does not exist");
+				return;
+			}
 		}
-		}
-		
-		
+
+
 	}
 	public Link readLink(int id)
 	{
@@ -336,17 +336,17 @@ public class NetSimModel {
 
 		try
 		{
-			   
-				System.out.println("initType:" + link.initType+"\t"+"initId:"+link.initId+"\t"+"endType:"+link.endType+"\t"+"endId:"+link.endId);
-				
+
+			System.out.println("initType:" + link.initType+"\t"+"initId:"+link.initId+"\t"+"endType:"+link.endType+"\t"+"endId:"+link.endId);
+
 		}
 		catch(Exception e)
-		
+
 		{
 			System.out.println("exception"+e.getMessage());
 		}
-		
-		
+
+
 		return link;
 	}
 }
