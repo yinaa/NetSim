@@ -7,7 +7,7 @@ public class NetSimMain {
 		NetSimView       view       = new NetSimView();
 		@SuppressWarnings("unused")
 		NetSimController controller = new NetSimController(model, view);
-		new WelcomeWindow(view,5000);
+		//new WelcomeWindow(view,5000);
 		view.setVisible(true);
 		view.setLocationRelativeTo(null);
 	}
