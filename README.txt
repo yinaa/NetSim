@@ -63,6 +63,8 @@ Save the current topology:
 Open a saved topology:
 ----------------------
 - On the menu: File -> Open, this will open the last saved topology
+  in two stages: 1st the elements and then...
+- Click on the canvas an the links will be loaded as well
 
 Start a New topology:
 ---------------------
