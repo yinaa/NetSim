@@ -80,7 +80,10 @@ public class NetSimModel {
 	//=============================================================== remove link
 	/** remove link */
 	public void removeLink(String type, int id){
-		for(Link l: linkList){
+		System.out.println(linkList.size());
+		
+		for(Link l : linkList){
+			System.out.println(l.initType+l.initId+" "+l.endType+l.endId);
 			if (type.compareTo(l.initType)==0 && id==l.initId || type.compareTo(l.endType)==0 && id==l.endId ){
 				linkList.remove(l);
 			}
@@ -143,6 +146,7 @@ public class NetSimModel {
 		nodeList.clear();
 		transList.clear();
 		appList.clear();
+		linkList.clear();
 	}
 
 	//==================================================================== open

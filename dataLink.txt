@@ -1,2 +1,3 @@
-trans | 1 | trans | 2
-trans | 2 | trans | 3
+trans | 2 | trans | 1
+trans | 1 | trans | 3
+trans | 3 | trans | 4

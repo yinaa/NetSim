@@ -63,8 +63,12 @@ public class NetSimController {
 					String type = name.split("_")[0];
 					int id = new Integer(name.split("_")[1]);
 					m_view.rightPane.remove((Component) comp);
-					m_model.removeObject(type, id);	
+					
+					System.out.println("remove "+type+id);
 					m_model.removeLink(type, id);
+					m_model.removeObject(type, id);					
+					
+					System.out.println("removed");
 					drawLinks();
 				}
 								
