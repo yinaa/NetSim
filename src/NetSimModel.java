@@ -145,6 +145,7 @@ public class NetSimModel {
 		appList.clear();
 	}
 
+	//==================================================================== open
 	@SuppressWarnings("deprecation")
 	public void open() {
 		/*NetSimDataFileTableModel model = new NetSimDataFileTableModel("Data.dat");
@@ -267,6 +268,7 @@ public class NetSimModel {
 		}catch(Exception e){System.out.println(e.toString());}
 			
 	}
+	
 	//===
 	public HashMap<Integer, Node> getHash(String name){
 		if(name.compareTo("trans") == 0)

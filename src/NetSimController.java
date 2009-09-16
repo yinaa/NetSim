@@ -154,7 +154,7 @@ public class NetSimController {
 			int posX = me.getX();
 			int posY = me.getY();
 			String name = null;
-
+			
 			if (m_view.nodeButton.isSelected()){
 				name = "node";		
 			}
@@ -168,6 +168,7 @@ public class NetSimController {
 			if(name != null){
 				int id = m_model.insertObject(posX, posY, name);
 				m_view.paintObject(posX, posY, name + "_" + id);
+				drawLinks();
 			}
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
 			ArrayList<Component> selComp = selectedComponents;
@@ -201,7 +202,6 @@ public class NetSimController {
 				}
 			}
 			drawLinks();
-			m_view.rightPane.repaint();
 		}
 
 		public void mouseReleased(MouseEvent me){
@@ -262,7 +262,7 @@ public class NetSimController {
 			if(e.getActionCommand().compareTo("Open") == 0){
 				m_view.reset();
 				m_model.open();
-				//drawLinks();
+				drawLinks();
 				for (int i = 1; i < 100; i++) {
 					if(m_model.getHash("trans").containsKey(i)){
 						int posX = m_model.getHash("trans").get(i).getX();
@@ -286,16 +286,14 @@ public class NetSimController {
 						m_view.paintObject(posX, posY, name + "_" + id);
 					}
 				}
-
 				drawLinks();
-				m_view.rightPane.repaint();
 			}
 			
-			if(e.getActionCommand().compareTo("About")==0){
-				
-				
+			if(e.getActionCommand().compareTo("New")==0){
+				m_view.reset();
+				m_model.reset();
 			}
-			
+	
 			if(e.getActionCommand().compareTo("Quit")==0){
 				System.exit(0);
 			}

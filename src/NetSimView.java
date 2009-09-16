@@ -5,8 +5,7 @@ import java.awt.event.*;
 
 class NetSimView extends JFrame{
 	//... Components
-	private JTextField totalTextField     = new JTextField(5);
-	private JButton    clearButton        = new JButton("Clear");
+	private JButton  clearButton  = new JButton("Clear");
 
 	//Variable declaration
 	private static final long serialVersionUID = 1L;
@@ -28,8 +27,8 @@ class NetSimView extends JFrame{
 
 	//Menus
 	private JMenuBar jMenuBar;
-	private JMenu fileMenu, helpMenu;// editMenu;
-	private JMenuItem  jMenuItemOpen, jMenuItem3, jMenuItem2,  jMenuItem4, jMenuItem1;
+	private JMenu fileMenu; //helpMenu, editMenu;
+	private JMenuItem  jMenuItemOpen, jMenuItemSave, jMenuItemQuit, jMenuItemNew; //jMenuItemAbout;
 
 	//Icons
 	ImageIcon iconNode  = new ImageIcon (getClass().getClassLoader().getResource("resources/icons/node.png"));
@@ -46,9 +45,7 @@ class NetSimView extends JFrame{
 		//... Set up the logic
 		try {
 			//... Initialize components
-			//totalTextField.setText(ns_model.getValue());
-			totalTextField.setEditable(false);
-
+			
 			setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			//Back Pane setup
 			setBackPane();
@@ -66,7 +63,7 @@ class NetSimView extends JFrame{
 	void setBackPane(){
 		backPane.setDividerSize(2);
 		backPane.setDividerLocation(150);
-		backPane.setPreferredSize(new Dimension(600, 600));
+		backPane.setPreferredSize(new Dimension(650, 450));
 		backPane.add(leftPane, JSplitPane.LEFT);
 		backPane.add(rightPane, JSplitPane.RIGHT);
 		getContentPane().add(backPane, BorderLayout.CENTER);		
@@ -138,20 +135,24 @@ class NetSimView extends JFrame{
 			fileMenu.setText("File");
 			fileMenu.setName("fileMenu");
 			{
-				jMenuItem1 = new JMenuItem();
-				fileMenu.add(jMenuItem1);
-				jMenuItem1.setText("New");
-				jMenuItem3 = new JMenuItem();
-				fileMenu.add(jMenuItem3);
-				jMenuItem3.setText("Save");
-				jMenuItem2 = new JMenuItem();
+				jMenuItemNew = new JMenuItem();
+				fileMenu.add(jMenuItemNew);
+				jMenuItemNew.setText("New");
+				jMenuItemSave = new JMenuItem();
+				fileMenu.add(jMenuItemSave);
+				jMenuItemSave.setText("Save");
+				
 				jMenuItemOpen = new JMenuItem();
 				fileMenu.add(jMenuItemOpen);
 				jMenuItemOpen.setText("Open");
+				
 				fileMenu.addSeparator();
-				fileMenu.add(jMenuItem2);
-				jMenuItem2.setText("Quit");
-			}		            	
+				
+				jMenuItemQuit = new JMenuItem();
+				fileMenu.add(jMenuItemQuit);
+				jMenuItemQuit.setText("Quit");
+			}		  
+			
 //			//Edit Menu
 //			editMenu = new JMenu();
 //			jMenuBar.add(editMenu);
@@ -162,18 +163,16 @@ class NetSimView extends JFrame{
 //				editMenu.add(jMenuItem3);
 //				jMenuItem3.setText("Clear");
 //			}
-			//Help Menu
-			helpMenu = new JMenu();
-			jMenuBar.add(helpMenu);
-			helpMenu.setText("Help");
-			helpMenu.setName("helpMenu");
-			{
-				jMenuItem4 = new JMenuItem();
-				helpMenu.add(jMenuItem4);
-				jMenuItem4.setText("About");	
-				//jMenuItem4.addActionListener(SimpleListener1);
-				//jMenuItem4.setAction(getAppActionMap().get("about"));
-			}									
+//			//Help Menu
+//			helpMenu = new JMenu();
+//			jMenuBar.add(helpMenu);
+//			helpMenu.setText("Help");
+//			helpMenu.setName("helpMenu");
+//			{
+//				jMenuItemAbout = new JMenuItem();
+//				helpMenu.add(jMenuItemAbout);
+//				jMenuItemAbout.setText("About");	
+//			}									
 		}
 	}
 
@@ -199,10 +198,10 @@ class NetSimView extends JFrame{
 		clearButton.addActionListener(cal);
 	}
 	void addMenuListener(ActionListener menu){
-		jMenuItem3.addActionListener(menu);
-		jMenuItem2.addActionListener(menu);
+		jMenuItemNew.addActionListener(menu);
+		jMenuItemSave.addActionListener(menu);
 		jMenuItemOpen.addActionListener(menu);
-		jMenuItem4.addActionListener(menu);
+		jMenuItemQuit.addActionListener(menu);		
 	}
 
 	//============================================================ paint Object
@@ -244,9 +243,7 @@ class NetSimView extends JFrame{
 
 	//=================================================================== reset
 	void reset() {
-		totalTextField.setText("1");
 		rightPane.removeAll();
-		repaint();
 		rightPane.repaint();
 	}
 }
