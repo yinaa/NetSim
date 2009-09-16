@@ -330,4 +330,23 @@ public class NetSimModel {
 		
 		
 	}
+	public Link readLink(int id)
+	{
+		Link link=linkList.get(id);
+
+		try
+		{
+			   
+				System.out.println("initType:" + link.initType+"\t"+"initId:"+link.initId+"\t"+"endType:"+link.endType+"\t"+"endId:"+link.endId);
+				
+		}
+		catch(Exception e)
+		
+		{
+			System.out.println("exception"+e.getMessage());
+		}
+		
+		
+		return link;
+	}
 }
