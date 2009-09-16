@@ -63,12 +63,8 @@ public class NetSimController {
 					String type = name.split("_")[0];
 					int id = new Integer(name.split("_")[1]);
 					m_view.rightPane.remove((Component) comp);
-					
-					System.out.println("remove "+type+id);
 					m_model.removeLink(type, id);
 					m_model.removeObject(type, id);					
-					
-					System.out.println("removed");
 					drawLinks();
 				}
 								
@@ -155,6 +151,7 @@ public class NetSimController {
 	 *   3. If Link button is selected:
 	 */  
 	class RightPaneMouseListeners extends MouseAdapter {
+		Graphics g = m_view.rightPane.getGraphics();
 		public void mouseClicked(MouseEvent me) {
 			int posX = me.getX();
 			int posY = me.getY();
@@ -173,6 +170,7 @@ public class NetSimController {
 			if(name != null){
 				int id = m_model.insertObject(posX, posY, name);
 				m_view.paintObject(posX, posY, name + "_" + id);
+				m_view.rightPane.update(g);
 				drawLinks();
 			}
 			Component iconComp = m_view.rightPane.getComponentAt(posX, posY);
@@ -237,7 +235,6 @@ public class NetSimController {
 					String name = ((JLabel)iconComp).getText();
 					endType = name.split("_")[0];
 					endId = new Integer(name.split("_")[1]);
-
 					m_model.insertLink(initType, initId, endType, endId);
 					drawLinks();
 				}
@@ -265,9 +262,13 @@ public class NetSimController {
 				m_model.save();
 			}
 			if(e.getActionCommand().compareTo("Open") == 0){
-				m_view.reset();
+		//		m_view.reset();
+				Graphics g = m_view.rightPane.getGraphics();
+				m_view.rightPane.removeAll();
+				m_view.rightPane.update(g);
+				
 				m_model.open();
-				drawLinks();
+				
 				for (int i = 1; i < 100; i++) {
 					if(m_model.getHash("trans").containsKey(i)){
 						int posX = m_model.getHash("trans").get(i).getX();
@@ -289,12 +290,11 @@ public class NetSimController {
 						String name = "node";
 						int id = m_model.getHash("node").get(i).getId();
 						m_view.paintObject(posX, posY, name + "_" + id);
-					}
+					}	
 					drawLinks();
 				}
-				
-			}
-			
+				drawLinks();
+			}			
 			if(e.getActionCommand().compareTo("New")==0){
 				m_view.reset();
 				m_model.reset();

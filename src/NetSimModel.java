@@ -80,14 +80,14 @@ public class NetSimModel {
 	//=============================================================== remove link
 	/** remove link */
 	public void removeLink(String type, int id){
-		System.out.println(linkList.size());
-		
+		ArrayList<Link> removeList = new ArrayList<Link>();
 		for(Link l : linkList){
-			System.out.println(l.initType+l.initId+" "+l.endType+l.endId);
 			if (type.compareTo(l.initType)==0 && id==l.initId || type.compareTo(l.endType)==0 && id==l.endId ){
-				linkList.remove(l);
+				removeList.add(l);
 			}
 		}
+		for(Link l : removeList)
+			linkList.remove(l);
 	}
 
 	//=================================================== return link Coordinates
